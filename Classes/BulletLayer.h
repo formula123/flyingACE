@@ -10,19 +10,26 @@
 
 #include "cocos2d.h"
 #include "PlaneLayer.h"
+#include "BulletUserData.h"
 
 class BulletLayer : public cocos2d::Layer{
 public:
-	BulletLayer();
+	static BulletLayer* getInstance();
+
 	~BulletLayer();
-	CREATE_FUNC(BulletLayer);
+
 	virtual bool init() override;
 	void addBullet(float useless);
 	void bulletMoveFinished(Node* pSender);
 	void startShooting();
 	void stopShooting();
 
+
 	cocos2d::Array* pAllBullet;
+private:
+	BulletLayer();
+
+	int eachBulletDamage;
 };
 
 #endif /* BULLETLAYER_H_ */

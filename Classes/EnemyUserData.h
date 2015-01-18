@@ -10,10 +10,12 @@
 
 class EnemyUserData {
 public:
-	EnemyUserData(bool inputIsDeleting);
-	void setIsDeleting(bool inputIsDeleting);
+	EnemyUserData(int initHP);
+	void setIsDeleting();
 	bool getIsDeleting();
+	bool isAliveUnderAttack(int damage);
 private:
+	int HP;
 	bool isDeleting;
 };
 

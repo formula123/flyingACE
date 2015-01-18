@@ -13,6 +13,8 @@
 #include "cocos2d.h"
 #include "PlaneLayer.h"
 #include "EnemyUserData.h"
+#include "BulletLayer.h"
+#include "BulletUserData.h"
 
 
 class EnemyLayer : public cocos2d::Layer{
@@ -31,6 +33,7 @@ public:
 
 	std::vector<std::string> enemyTextureName;
 	std::vector<int> enemyFlyTime;
+	std::vector<int> enemyInitHP;
 
 	const float  baseEnemyAppearProbability;
 	const float deltaEnemyAppearProbability;

@@ -7,16 +7,22 @@
 
 #include "EnemyUserData.h"
 
-EnemyUserData::EnemyUserData(bool inputIsDeleting):isDeleting(inputIsDeleting){
-
+EnemyUserData::EnemyUserData(int initHP):isDeleting(false),HP(initHP){
 }
 
-void EnemyUserData::setIsDeleting(bool inputIsDeleting){
-	this->isDeleting = inputIsDeleting;
-
+void EnemyUserData::setIsDeleting(){
+	this->isDeleting = true;
 }
 
 bool EnemyUserData::getIsDeleting(){
 	return this->isDeleting;
 }
 
+bool EnemyUserData::isAliveUnderAttack(int damage){
+	this->HP -= damage;
+	if(this->HP <= 0){
+		return false;
+	}else{
+		return true;
+	}
+}

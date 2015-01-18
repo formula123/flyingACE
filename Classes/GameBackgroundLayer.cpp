@@ -12,8 +12,6 @@ USING_NS_CC;
 const float backgroundMoveSpeed = 1;
 
 bool GameBackgroundLayer::init(){
-
-
 	background1 = Sprite::createWithSpriteFrameName("img_bg_1.jpg");
 	background1->setAnchorPoint(Point(0,0));
 	this->addChild(background1);

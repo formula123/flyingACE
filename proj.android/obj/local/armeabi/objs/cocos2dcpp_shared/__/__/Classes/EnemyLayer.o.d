@@ -313,7 +313,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/EnemyLayer.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../Classes/PlaneLayer.h jni/../../Classes/EnemyUserData.h
+ jni/../../Classes/PlaneLayer.h jni/../../Classes/EnemyUserData.h \
+ jni/../../Classes/BulletLayer.h jni/../../Classes/BulletUserData.h
 
 jni/../../Classes/EnemyLayer.h:
 
@@ -946,3 +947,7 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 jni/../../Classes/PlaneLayer.h:
 
 jni/../../Classes/EnemyUserData.h:
+
+jni/../../Classes/BulletLayer.h:
+
+jni/../../Classes/BulletUserData.h:

@@ -348,8 +348,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/hellocpp/main.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
  jni/../../Classes/GameBackgroundLayer.h jni/../../Classes/PlaneLayer.h \
- jni/../../Classes/BulletLayer.h jni/../../Classes/EnemyLayer.h \
- jni/../../Classes/EnemyUserData.h \
+ jni/../../Classes/BulletLayer.h jni/../../Classes/BulletUserData.h \
+ jni/../../Classes/EnemyLayer.h jni/../../Classes/EnemyUserData.h \
  jni/../../cocos2d/cocos/3d/../platform/android/jni/JniHelper.h
 
 jni/../../Classes/AppDelegate.h:
@@ -1053,6 +1053,8 @@ jni/../../Classes/GameBackgroundLayer.h:
 jni/../../Classes/PlaneLayer.h:
 
 jni/../../Classes/BulletLayer.h:
+
+jni/../../Classes/BulletUserData.h:
 
 jni/../../Classes/EnemyLayer.h:
 
