@@ -36,15 +36,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	textureCache->addSpriteFramesWithFile("texture.plist");
 
-	auto animition = Animation::create();
-
+	Vector<SpriteFrame*> explosionAnimationVector;
 	for (int i = 0; i < 9; i++){
-	    char animitionFileName[128] = {0};
-	    sprintf(animitionFileName, "explosion%02d.png", i+1);
-	    animition->addSpriteFrameWithFile(animitionFileName);
-	}
-
-	animationCache->addAnimation(animition,"explosion");
+		    char animitionFileName[128] = {0};
+		    sprintf(animitionFileName, "explosion%02d.png", i+1);
+		    SpriteFrame* fm = SpriteFrameCache::getInstance()->getSpriteFrameByName(animitionFileName);
+		    explosionAnimationVector.pushBack(fm);
+		}
+	Animation* explosionAnimation = Animation::createWithSpriteFrames(explosionAnimationVector, 0.5f / 9.0f, 1);
+	AnimationCache::getInstance()->addAnimation(explosionAnimation,"explosion");
 
 	// create a scene. it's an autorelease object
 	Scene* gameScene = Scene::create();
@@ -60,6 +60,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	// run
 	director->runWithScene(gameScene);
+	log("director->runWithScene(gameScene);");
 
 	return true;
 }

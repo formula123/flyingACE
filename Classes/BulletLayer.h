@@ -25,6 +25,7 @@ public:
 	void stopShooting();
 
 	cocos2d::Vector<cocos2d::Sprite*> allBullet;
+	cocos2d::SpriteBatchNode* bulletBatchNode;
 private:
 	BulletLayer();
 

@@ -20,6 +20,8 @@ BulletLayer* BulletLayer::getInstance() {
 }
 
 bool BulletLayer::init() {
+	bulletBatchNode = SpriteBatchNode::createWithTexture(SpriteFrameCache::getInstance()->getSpriteFrameByName("bullet.png")->getTexture());
+	this->addChild(bulletBatchNode);
 	this->startShooting();
 	return true;
 }
@@ -31,16 +33,15 @@ void BulletLayer::addBullet(float useless) {
 	Point bulletPosition = Point(planePosition.x, planePosition.y + PlaneLayer::getInstance()->getChildByName("PLANE")->getContentSize().height);
 	bullet->setPosition(bulletPosition);
 	bullet->setUserData(new BulletUserData(eachBulletDamage));
-	//pAllBullet->addObject(bullet);
 	allBullet.pushBack(bullet);
-	this->addChild(bullet);
+	this->bulletBatchNode->addChild(bullet);
 
 	float bulletFlyLenth = Director::getInstance()->getWinSize().height - bulletPosition.y + (bullet->getContentSize().height / 2);
 	float bulletFlySpeed = 320 / 1;
 	float bulletFltTime = bulletFlyLenth / bulletFlySpeed;
 
 	FiniteTimeAction* bulletMove = MoveTo::create(bulletFltTime, Point(bulletPosition.x, Director::getInstance()->getWinSize().height + bullet->getContentSize().height / 2));
-	FiniteTimeAction* bulletRemove = CallFuncN::create(this, callfuncN_selector(BulletLayer::bulletMoveFinished));
+	FiniteTimeAction* bulletRemove = CallFuncN::create(CC_CALLBACK_1(BulletLayer::bulletMoveFinished, this));
 
 	auto bulleAction = Sequence::create(bulletMove, bulletRemove, NULL);
 	bullet->runAction(bulleAction);
@@ -49,9 +50,8 @@ void BulletLayer::addBullet(float useless) {
 void BulletLayer::bulletMoveFinished(Node* pSender) {
 	Sprite* bullet = static_cast<Sprite*>(pSender);
 	delete static_cast<BulletUserData*>(bullet->getUserData());
-	//pAllBullet->removeObject(bullet);
 	allBullet.eraseObject(bullet);
-	this->removeChild(bullet, true);
+	this->bulletBatchNode->removeChild(bullet, true);
 }
 
 void BulletLayer::startShooting() {
@@ -62,12 +62,8 @@ void BulletLayer::stopShooting() {
 	this->unschedule(schedule_selector(BulletLayer::addBullet));
 }
 
-BulletLayer::BulletLayer():eachBulletDamage(100){
-	/*pAllBullet = Array::create();
-	pAllBullet->retain();*/
+BulletLayer::BulletLayer():eachBulletDamage(100),bulletBatchNode(nullptr){
 }
 
 BulletLayer::~BulletLayer() {
-	/*pAllBullet->release();
-	pAllBullet = nullptr;*/
 }
