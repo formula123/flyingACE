@@ -29,7 +29,8 @@ public:
 	void update(float useless) override;
 
 	const cocos2d::Size winSize;
-	cocos2d::Array* pAllEnemy;
+	//cocos2d::Array* pAllEnemy;
+	cocos2d::Vector<cocos2d::Sprite*> allEnemy;
 
 	std::vector<std::string> enemyTextureName;
 	std::vector<int> enemyFlyTime;

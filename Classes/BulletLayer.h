@@ -24,8 +24,7 @@ public:
 	void startShooting();
 	void stopShooting();
 
-
-	cocos2d::Array* pAllBullet;
+	cocos2d::Vector<cocos2d::Sprite*> allBullet;
 private:
 	BulletLayer();
 

@@ -35,20 +35,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	director->setAnimationInterval(1.0 / 60);
 
 	textureCache->addSpriteFramesWithFile("texture.plist");
-	animationCache->addAnimationsWithFile("texture.plist");
-
-
 
 	auto animition = Animation::create();
-	animition->addSpriteFrameWithFileName("explosion01.png");
-	animition->addSpriteFrameWithFileName("explosion02.png");
-	animition->addSpriteFrameWithFileName("explosion03.png");
-	animition->addSpriteFrameWithFileName("explosion04.png");
-	animition->addSpriteFrameWithFileName("explosion05.png");
-	animition->addSpriteFrameWithFileName("explosion06.png");
-	animition->addSpriteFrameWithFileName("explosion07.png");
-	animition->addSpriteFrameWithFileName("explosion08.png");
-	animition->addSpriteFrameWithFileName("explosion09.png");
+
+	for (int i = 0; i < 9; i++){
+	    char animitionFileName[128] = {0};
+	    sprintf(animitionFileName, "explosion%02d.png", i+1);
+	    animition->addSpriteFrameWithFile(animitionFileName);
+	}
 
 	animationCache->addAnimation(animition,"explosion");
 

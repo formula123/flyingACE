@@ -10,14 +10,10 @@
 USING_NS_CC;
 
 EnemyLayer::EnemyLayer() :
-		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(0.1), deltaEnemyAppearProbability(0.005), nowEnemyAppearProbability(baseEnemyAppearProbability), pAllEnemy(nullptr) {
-	pAllEnemy = Array::create();
-	pAllEnemy->retain();
+		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(0.1), deltaEnemyAppearProbability(0.005), nowEnemyAppearProbability(baseEnemyAppearProbability){
 }
 
 EnemyLayer::~EnemyLayer() {
-	pAllEnemy->release();
-	pAllEnemy = nullptr;
 }
 
 bool EnemyLayer::init() {
@@ -48,10 +44,10 @@ void EnemyLayer::addEnemySprite(float useless) {
 		enemySprite->setPosition(randomX, winSize.height +enemySprite->getContentSize().height/2 );
 		enemySprite->setUserData(new EnemyUserData(enemyInitHP[randomLevel]));
 		this->addChild(enemySprite);
-		pAllEnemy->addObject(enemySprite);
+		allEnemy.pushBack(enemySprite);
 
 		FiniteTimeAction* enemyMove = MoveTo::create(enemyFlyTime[randomLevel], Point(randomX, - enemySprite->getContentSize().height/2));
-		FiniteTimeAction* enemyRemove = CallFuncN::create(this, callfuncN_selector(EnemyLayer::enemyMoveFinished));
+		FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
 		Action* enemyAction = Sequence::create(enemyMove, enemyRemove, NULL);
 		enemySprite->runAction(enemyAction);
 	}
@@ -60,7 +56,7 @@ void EnemyLayer::addEnemySprite(float useless) {
 
 void EnemyLayer::enemyMoveFinished(Node* pSender) {
 	Sprite* enemy = (Sprite*) pSender;
-	pAllEnemy->removeObject(enemy);
+	allEnemy.eraseObject(enemy);
 	delete static_cast<EnemyUserData*>(enemy->getUserData());
 	this->removeChild(enemy, true);
 }
@@ -70,21 +66,17 @@ void EnemyLayer::startAddEnemy() {
 }
 
 void EnemyLayer::update(float useless) {
-	Object* eachEnemy;
-	Object* eachBullet;
 	Animation* animationExplosion = AnimationCache::getInstance()->getAnimation("explosion");
 	animationExplosion->setRestoreOriginalFrame(false);
 	animationExplosion->setDelayPerUnit(0.5f / 9.0f);
 	auto actionExplosion = Animate::create(animationExplosion);
-	CCARRAY_FOREACH(this->pAllEnemy, eachEnemy) {
-		Sprite* enemy = static_cast<Sprite*>(eachEnemy);
+	for( Sprite* enemy : this->allEnemy ){
 		if (static_cast<EnemyUserData*>(enemy->getUserData())->getIsDeleting() == false) {
-			CCARRAY_FOREACH(BulletLayer::getInstance()->pAllBullet, eachBullet) {
-				Sprite* bullet = static_cast<Sprite*>(eachBullet);
-				if (bullet->boundingBox().intersectsRect(enemy->boundingBox())) {
+			for( Sprite* bullet : BulletLayer::getInstance()->allBullet ){
+				if (bullet->getBoundingBox().intersectsRect(enemy->getBoundingBox())) {
 					if (static_cast<EnemyUserData*>(enemy->getUserData())->isAliveUnderAttack(static_cast<BulletUserData*>(bullet->getUserData())->getDamage()) == false) {
 						enemy->stopAllActions();
-						FiniteTimeAction* enemyRemove = CallFuncN::create(this, callfuncN_selector(EnemyLayer::enemyMoveFinished));
+						FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished,this));
 						enemy->runAction(Sequence::create(actionExplosion, enemyRemove, NULL));
 						static_cast<EnemyUserData*>(enemy->getUserData())->setIsDeleting();
 					}
@@ -92,10 +84,10 @@ void EnemyLayer::update(float useless) {
 				}
 			}
 		}
-		if (static_cast<EnemyUserData*>(enemy->getUserData())->getIsDeleting() == false && enemy->boundingBox().intersectsRect(PlaneLayer::getInstance()->myPlane->boundingBox())) {
+		if (static_cast<EnemyUserData*>(enemy->getUserData())->getIsDeleting() == false && enemy->getBoundingBox().intersectsRect(PlaneLayer::getInstance()->myPlane->getBoundingBox())) {
 			if (static_cast<EnemyUserData*>(enemy->getUserData())->isAliveUnderAttack(9999) == false) {
 				enemy->stopAllActions();
-				FiniteTimeAction* enemyRemove = CallFuncN::create(this, callfuncN_selector(EnemyLayer::enemyMoveFinished));
+				FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
 				enemy->runAction(Sequence::create(actionExplosion, enemyRemove, NULL));
 				static_cast<EnemyUserData*>(enemy->getUserData())->setIsDeleting();
 			}

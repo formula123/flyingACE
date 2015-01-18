@@ -17,7 +17,6 @@ public:
 	void update(float useless) override;
 	cocos2d::Sprite* background1;
 	cocos2d::Sprite* background2;
-
 };
 
 #endif /* GAMEBACKGROUNDLAYER_H_ */

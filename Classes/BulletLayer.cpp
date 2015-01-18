@@ -31,7 +31,8 @@ void BulletLayer::addBullet(float useless) {
 	Point bulletPosition = Point(planePosition.x, planePosition.y + PlaneLayer::getInstance()->getChildByName("PLANE")->getContentSize().height);
 	bullet->setPosition(bulletPosition);
 	bullet->setUserData(new BulletUserData(eachBulletDamage));
-	pAllBullet->addObject(bullet);
+	//pAllBullet->addObject(bullet);
+	allBullet.pushBack(bullet);
 	this->addChild(bullet);
 
 	float bulletFlyLenth = Director::getInstance()->getWinSize().height - bulletPosition.y + (bullet->getContentSize().height / 2);
@@ -48,7 +49,8 @@ void BulletLayer::addBullet(float useless) {
 void BulletLayer::bulletMoveFinished(Node* pSender) {
 	Sprite* bullet = static_cast<Sprite*>(pSender);
 	delete static_cast<BulletUserData*>(bullet->getUserData());
-	pAllBullet->removeObject(bullet);
+	//pAllBullet->removeObject(bullet);
+	allBullet.eraseObject(bullet);
 	this->removeChild(bullet, true);
 }
 
@@ -61,11 +63,11 @@ void BulletLayer::stopShooting() {
 }
 
 BulletLayer::BulletLayer():eachBulletDamage(100){
-	pAllBullet = Array::create();
-	pAllBullet->retain();
+	/*pAllBullet = Array::create();
+	pAllBullet->retain();*/
 }
 
 BulletLayer::~BulletLayer() {
-	pAllBullet->release();
-	pAllBullet = nullptr;
+	/*pAllBullet->release();
+	pAllBullet = nullptr;*/
 }
