@@ -1,4 +1,5 @@
 # flyingACE
+- This is a Plane Game base on iOS and android using Cocos2d-x-3.3
 -  这是一个使用Cocos2d3.0开发的飞机大战游戏，实际版本为Cocos2d-x3.3
 ---
 ## 开发环境
@@ -18,7 +19,7 @@
 - EnemyUserData: 敌机数据
 - GameBackgroundLayer: 布景层，实现地图加载，循环滚动
 - PlaneLayer: 飞机层，渲染飞机动画，响应用户滑屏操作
-- PlaneUserData: 飞机数据
+-  PlaneUserData: 飞机数据
 ---
 # 联系方式
 - Email: netbeen.cn@gmail.com
