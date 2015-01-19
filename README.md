@@ -3,7 +3,7 @@
 
 ---
 
-## 开发环境
+## 开发环境 Dev Environment
 - Linux OS (Ubuntu 14.04 LTS)
 - Eclipse 4.4.1
 - Cocos2d-x-3.3
@@ -14,7 +14,7 @@
 
 ---
 
-## 主要类功能分布
+## 类功能分布 Files
 - AppDelegate: 程序入口，初始化Director类的参数，场景构建，布景层挂载，精灵挂载
 - BulletLayer: 子弹层，用批量渲染技术加载子弹并维护子弹数据
 - BulletUserData: 子弹数据
@@ -26,13 +26,13 @@
 
 ---
 
-#鸣谢
+#鸣谢 Thanks
 - 特别感谢TexturePacker的作者Andreas Löw为本次开发提供Pro版的序列号
 - Thanks to Mr. Andreas Löw (the author of TexturePacker), for prividing the free key of TexturePacker pro.
 
 ---
 
-# 联系方式
+# 联系方式 Contact Me
 - Email: netbeen.cn@gmail.com
 - QQ: 394062113
 
