@@ -28,7 +28,7 @@
 
 #鸣谢
 - 特别感谢TexturePacker的作者Andreas Löw为本次开发提供Pro版的序列号
-- Thanks to Mr. Andreas Löw (the author of TexturePacker), for prividing the free key for TexturePacker pro.
+- Thanks to Mr. Andreas Löw (the author of TexturePacker), for prividing the free key of TexturePacker pro.
 
 ---
 
