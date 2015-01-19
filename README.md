@@ -26,6 +26,12 @@
 
 ---
 
+#鸣谢
+- 特别感谢TexturePacker的作者Andreas Löw为本次开发提供Pro版的序列号
+- Thanks to the author of TexturePacker Mr. Andreas Löw, for prividing the free key for TexturePacker pro.
+
+---
+
 # 联系方式
 - Email: netbeen.cn@gmail.com
 - QQ: 394062113
