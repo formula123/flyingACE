@@ -1,5 +1,5 @@
 # flyingACE
-- 这是一个使用Cocos2d-x-3.X开发的飞机大战游戏，实际版本为Cocos2d-x3.3
+- 这是一个使用Cocos2d-x-3.X 开发的飞机大战游戏，实际版本为Cocos2d-x3.3
 
 ---
 
