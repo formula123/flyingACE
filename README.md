@@ -10,7 +10,7 @@
 - Android SDK 4.4.2 (API 19)
 - Android NDK r10d
 - gcc 4.8
-- 在linux平台、android平台、android虚拟机上测试通过
+- 在win32平台、linux平台、android平台、android虚拟机上测试通过
 
 ---
 
