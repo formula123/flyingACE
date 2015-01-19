@@ -1,5 +1,5 @@
 # flyingACE
-- 这是一个使用Cocos2d3.0开发的飞机大战游戏，实际版本为Cocos2d-x3.3
+-  这是一个使用Cocos2d3.0开发的飞机大战游戏，实际版本为Cocos2d-x3.3
 ---
 ## 开发环境
 - Linux OS (Ubuntu 14.04 LTS)
@@ -8,7 +8,7 @@
 - Android SDK 4.4.2 (API 19)
 - Android NDK r10d
 - gcc 4.8
-- 在linux平台、android平台、android虚拟机上测试通过
+-  在linux平台、android平台、android虚拟机上测试通过
 ---
 ## 主要类功能分布
 - AppDelegate: 程序入口，初始化Director类的参数，场景构建，布景层挂载，精灵挂载
