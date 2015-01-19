@@ -15,11 +15,13 @@
 #include "EnemyUserData.h"
 #include "BulletLayer.h"
 #include "BulletUserData.h"
+#include "PlaneLayer.h"
+#include "PlaneUserData.h"
 
 
 class EnemyLayer : public cocos2d::Layer{
 public:
-	CREATE_FUNC(EnemyLayer);
+	static EnemyLayer* getInstance();
 private:
 	const float  baseEnemyAppearProbability;
 	const float deltaEnemyAppearProbability;

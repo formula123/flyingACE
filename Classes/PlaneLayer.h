@@ -9,6 +9,7 @@
 #define PLANELAYER_H_
 
 #include "cocos2d.h"
+#include "PlaneUserData.h"
 
 class PlaneLayer : public cocos2d::Layer{
 public:
@@ -16,6 +17,7 @@ public:
 	cocos2d::Sprite* getMyPlane();
 
 private:
+	const int initHP;
 	PlaneLayer();
 	const cocos2d::Size winSize;
 	virtual bool init() override;

@@ -17,7 +17,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/BulletLayer.cpp \
                    ../../Classes/EnemyLayer.cpp \
                    ../../Classes/EnemyUserData.cpp \
-                   ../../Classes/BulletUserData.cpp
+                   ../../Classes/BulletUserData.cpp \
+                   ../../Classes/PlaneUserData.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 

@@ -34,7 +34,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// set FPS. the default value is 1.0/60 if you don't call this
 	director->setAnimationInterval(1.0 / 60);
 
-	textureCache->addSpriteFramesWithFile("texture.plist");
+	cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture.plist");
 
 	Vector<SpriteFrame*> explosionAnimationVector;
 	for (int i = 0; i < 9; i++){
@@ -55,7 +55,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	gameScene->addChild(planeLayer);
 	BulletLayer* bulletLayer = BulletLayer::getInstance();
 	gameScene->addChild(bulletLayer);
-	EnemyLayer* enemyLayer = EnemyLayer::create();
+	EnemyLayer* enemyLayer = EnemyLayer::getInstance();
 	gameScene->addChild(enemyLayer);
 
 	// run

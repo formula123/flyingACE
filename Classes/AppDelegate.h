@@ -39,7 +39,7 @@ public:
 	virtual void applicationWillEnterForeground();
 private:
 	cocos2d::SpriteFrameCache* textureCache = cocos2d::SpriteFrameCache::getInstance();
-	cocos2d::AnimationCache* animationCache = cocos2d::AnimationCache::getInstance();
+	//cocos2d::AnimationCache* animationCache = cocos2d::AnimationCache::getInstance();
 };
 
 #endif // _APP_DELEGATE_H_

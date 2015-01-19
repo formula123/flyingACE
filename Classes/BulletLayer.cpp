@@ -36,7 +36,9 @@ void BulletLayer::addBullet(float useless) {
 	allBullet.pushBack(bullet);
 	this->bulletBatchNode->addChild(bullet);
 
-	float bulletFltTime = 1;
+	float bulletFlyLenth = Director::getInstance()->getWinSize().height - bulletPosition.y + (bullet->getContentSize().height / 2);
+	float bulletFlySpeed = 1000 / 1;
+	float bulletFltTime = bulletFlyLenth / bulletFlySpeed;
 
 	FiniteTimeAction* bulletMove = MoveTo::create(bulletFltTime, Point(bulletPosition.x, Director::getInstance()->getWinSize().height + bullet->getContentSize().height / 2));
 	FiniteTimeAction* bulletRemove = CallFuncN::create(CC_CALLBACK_1(BulletLayer::bulletMoveFinished, this));

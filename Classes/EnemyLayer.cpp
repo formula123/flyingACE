@@ -9,8 +9,18 @@
 
 USING_NS_CC;
 
+static EnemyLayer* _sharedEnemyLayer = nullptr;
+
+EnemyLayer* EnemyLayer::getInstance() {
+	if (!_sharedEnemyLayer) {
+		_sharedEnemyLayer = new (std::nothrow) EnemyLayer();
+		_sharedEnemyLayer->init();
+	}
+	return _sharedEnemyLayer;
+}
+
 EnemyLayer::EnemyLayer() :
-		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(0.1), deltaEnemyAppearProbability(0.005), nowEnemyAppearProbability(baseEnemyAppearProbability){
+		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(0.1), deltaEnemyAppearProbability(0.005), nowEnemyAppearProbability(baseEnemyAppearProbability) {
 }
 
 EnemyLayer::~EnemyLayer() {
@@ -71,27 +81,49 @@ void EnemyLayer::update(float useless) {
 	animationExplosion->setRestoreOriginalFrame(false);
 	animationExplosion->setDelayPerUnit(0.5f / 9.0f);
 	auto actionExplosion = Animate::create(animationExplosion);
-	for( Sprite* enemy : this->allEnemy ){
+	for (Sprite* enemy : this->allEnemy) {
+		//判断敌机是否正在爆炸
 		if (static_cast<EnemyUserData*>(enemy->getUserData())->getIsDeleting() == false) {
-			for( Sprite* bullet : BulletLayer::getInstance()->allBullet ){
+			for (Sprite* bullet : BulletLayer::getInstance()->allBullet) {
+				//判断子弹是否与敌机碰撞
 				if (bullet->getBoundingBox().intersectsRect(enemy->getBoundingBox())) {
+					//读取子弹的伤害，给敌机造成伤害
 					if (static_cast<EnemyUserData*>(enemy->getUserData())->isAliveUnderAttack(static_cast<BulletUserData*>(bullet->getUserData())->getDamage()) == false) {
 						enemy->stopAllActions();
-						FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished,this));
+						FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
 						enemy->runAction(Sequence::create(actionExplosion, enemyRemove, NULL));
 						static_cast<EnemyUserData*>(enemy->getUserData())->setIsDeleting();
 					}
+					//end读取子弹的伤害，给敌机造成伤害
+
+					//回收子弹
 					BulletLayer::getInstance()->bulletMoveFinished(bullet);
 				}
+				//end判断子弹是否与敌机碰撞
+
+				//判断我方飞机是否与敌机碰撞
+				if (enemy->getBoundingBox().intersectsRect(PlaneLayer::getInstance()->getMyPlane()->getBoundingBox())) {
+					//给敌机造成伤害
+					if (static_cast<EnemyUserData*>(enemy->getUserData())->isAliveUnderAttack(9999) == false) {
+						enemy->stopAllActions();
+						FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
+						enemy->runAction(Sequence::create(actionExplosion, enemyRemove, NULL));
+						static_cast<EnemyUserData*>(enemy->getUserData())->setIsDeleting();
+					}
+					//end给敌机造成伤害
+
+					//给我方飞机造成伤害
+					if (static_cast<PlaneUserData*>(PlaneLayer::getInstance()->getMyPlane()->getUserData())->isAliveUnderAttack(100) == false) {
+						FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
+						PlaneLayer::getInstance()->getMyPlane()->runAction(Sequence::create(actionExplosion, NULL));
+					}
+					//end给我方飞机造成伤害
+
+				}
+				//end判断我方飞机是否与敌机碰撞
 			}
 		}
-		if (static_cast<EnemyUserData*>(enemy->getUserData())->getIsDeleting() == false && enemy->getBoundingBox().intersectsRect(PlaneLayer::getInstance()->getMyPlane()->getBoundingBox())) {
-			if (static_cast<EnemyUserData*>(enemy->getUserData())->isAliveUnderAttack(9999) == false) {
-				enemy->stopAllActions();
-				FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
-				enemy->runAction(Sequence::create(actionExplosion, enemyRemove, NULL));
-				static_cast<EnemyUserData*>(enemy->getUserData())->setIsDeleting();
-			}
-		}
+		//end判断敌机是否正在爆炸
+
 	}
 }
