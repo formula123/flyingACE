@@ -13,15 +13,15 @@
 class PlaneLayer : public cocos2d::Layer{
 public:
 	static PlaneLayer* getInstance();
-	virtual bool init() override;
-    virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
-    virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
-    cocos2d::Sprite* myPlane;
+	cocos2d::Sprite* getMyPlane();
+
 private:
 	PlaneLayer();
 	const cocos2d::Size winSize;
-
-
+	virtual bool init() override;
+	virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
+    virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
+    cocos2d::Sprite* myPlane;
 };
 
 #endif /* PLANELAYER_H_ */

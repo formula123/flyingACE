@@ -23,6 +23,7 @@ bool EnemyLayer::init() {
 	enemyTextureName.push_back(name1);
 	enemyTextureName.push_back(name2);
 	enemyTextureName.push_back(name3);
+
 	enemyFlyTime.push_back(10);
 	enemyFlyTime.push_back(10);
 	enemyFlyTime.push_back(5);
@@ -84,7 +85,7 @@ void EnemyLayer::update(float useless) {
 				}
 			}
 		}
-		if (static_cast<EnemyUserData*>(enemy->getUserData())->getIsDeleting() == false && enemy->getBoundingBox().intersectsRect(PlaneLayer::getInstance()->myPlane->getBoundingBox())) {
+		if (static_cast<EnemyUserData*>(enemy->getUserData())->getIsDeleting() == false && enemy->getBoundingBox().intersectsRect(PlaneLayer::getInstance()->getMyPlane()->getBoundingBox())) {
 			if (static_cast<EnemyUserData*>(enemy->getUserData())->isAliveUnderAttack(9999) == false) {
 				enemy->stopAllActions();
 				FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));

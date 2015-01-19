@@ -19,26 +19,24 @@
 
 class EnemyLayer : public cocos2d::Layer{
 public:
+	CREATE_FUNC(EnemyLayer);
+private:
+	const float  baseEnemyAppearProbability;
+	const float deltaEnemyAppearProbability;
+	float nowEnemyAppearProbability;
+	std::vector<std::string> enemyTextureName;
+	std::vector<int> enemyFlyTime;
+	std::vector<int> enemyInitHP;
+	cocos2d::Vector<cocos2d::Sprite*> allEnemy;
+	const cocos2d::Size winSize;
+
 	EnemyLayer();
 	~EnemyLayer();
-	CREATE_FUNC(EnemyLayer);
 	virtual bool init() override;
 	void addEnemySprite(float useless);
 	void enemyMoveFinished(Node* pSender);
 	void startAddEnemy();
 	void update(float useless) override;
-
-	const cocos2d::Size winSize;
-	cocos2d::Vector<cocos2d::Sprite*> allEnemy;
-
-	std::vector<std::string> enemyTextureName;
-	std::vector<int> enemyFlyTime;
-	std::vector<int> enemyInitHP;
-
-	const float  baseEnemyAppearProbability;
-	const float deltaEnemyAppearProbability;
-	float nowEnemyAppearProbability;
-
 
 };
 

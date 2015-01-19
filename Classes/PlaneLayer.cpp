@@ -54,3 +54,6 @@ void PlaneLayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_even
 	}
 }
 
+Sprite* PlaneLayer::getMyPlane(){
+	return this->myPlane;
+}

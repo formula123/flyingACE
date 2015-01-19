@@ -12,8 +12,10 @@
 
 class GameBackgroundLayer : public cocos2d::Layer{
 public:
-	virtual bool init();
 	CREATE_FUNC(GameBackgroundLayer);
+
+private:
+	virtual bool init();
 	void update(float useless) override;
 	cocos2d::Sprite* background1;
 	cocos2d::Sprite* background2;

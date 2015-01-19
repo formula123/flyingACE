@@ -14,22 +14,21 @@
 
 class BulletLayer : public cocos2d::Layer{
 public:
+	cocos2d::Vector<cocos2d::Sprite*> allBullet;
+
 	static BulletLayer* getInstance();
-
-	~BulletLayer();
-
-	virtual bool init() override;
-	void addBullet(float useless);
 	void bulletMoveFinished(Node* pSender);
+
+private:
+	cocos2d::SpriteBatchNode* bulletBatchNode;
+	int eachBulletDamage;
+
+	BulletLayer();
+	~BulletLayer();
+	virtual bool init() override;
 	void startShooting();
 	void stopShooting();
-
-	cocos2d::Vector<cocos2d::Sprite*> allBullet;
-	cocos2d::SpriteBatchNode* bulletBatchNode;
-private:
-	BulletLayer();
-
-	int eachBulletDamage;
+	void addBullet(float useless);
 };
 
 #endif /* BULLETLAYER_H_ */
