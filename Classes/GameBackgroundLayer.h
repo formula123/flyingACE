@@ -12,7 +12,7 @@
 
 class GameBackgroundLayer : public cocos2d::Layer{
 public:
-	CREATE_FUNC(GameBackgroundLayer);
+	static GameBackgroundLayer* getInstance();
 
 private:
 	virtual bool init();

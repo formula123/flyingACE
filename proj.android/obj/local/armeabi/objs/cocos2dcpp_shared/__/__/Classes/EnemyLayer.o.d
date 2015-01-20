@@ -315,7 +315,10 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/EnemyLayer.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
  jni/../../Classes/PlaneLayer.h jni/../../Classes/PlaneUserData.h \
  jni/../../Classes/EnemyUserData.h jni/../../Classes/BulletLayer.h \
- jni/../../Classes/BulletUserData.h
+ jni/../../Classes/BulletUserData.h jni/../../Classes/ControlLayer.h \
+ /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/strstream \
+ /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h \
+ jni/../../Classes/GameBackgroundLayer.h
 
 jni/../../Classes/EnemyLayer.h:
 
@@ -954,3 +957,11 @@ jni/../../Classes/EnemyUserData.h:
 jni/../../Classes/BulletLayer.h:
 
 jni/../../Classes/BulletUserData.h:
+
+jni/../../Classes/ControlLayer.h:
+
+/home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/strstream:
+
+/home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h:
+
+jni/../../Classes/GameBackgroundLayer.h:

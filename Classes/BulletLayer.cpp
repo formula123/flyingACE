@@ -20,14 +20,14 @@ BulletLayer* BulletLayer::getInstance() {
 }
 
 bool BulletLayer::init() {
-	bulletBatchNode = SpriteBatchNode::createWithTexture(SpriteFrameCache::getInstance()->getSpriteFrameByName("bullet.png")->getTexture());
+	bulletBatchNode = SpriteBatchNode::createWithTexture(SpriteFrameCache::getInstance()->getSpriteFrameByName("bullet3.png")->getTexture());
 	this->addChild(bulletBatchNode);
 	this->startShooting();
 	return true;
 }
 
 void BulletLayer::addBullet(float useless) {
-	Sprite* bullet = Sprite::createWithSpriteFrameName("bullet.png");
+	Sprite* bullet = Sprite::createWithSpriteFrameName("bullet3.png");
 
 	Point planePosition = PlaneLayer::getInstance()->getChildByName("PLANE")->getPosition();
 	Point bulletPosition = Point(planePosition.x, planePosition.y + PlaneLayer::getInstance()->getChildByName("PLANE")->getContentSize().height);

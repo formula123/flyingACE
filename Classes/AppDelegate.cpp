@@ -49,18 +49,19 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// create a scene. it's an autorelease object
 	Scene* gameScene = Scene::create();
 
-	GameBackgroundLayer* backgroundLayer = GameBackgroundLayer::create();
+	GameBackgroundLayer* backgroundLayer = GameBackgroundLayer::getInstance();
 	gameScene->addChild(backgroundLayer);
-	PlaneLayer* planeLayer = PlaneLayer::getInstance();
-	gameScene->addChild(planeLayer);
 	BulletLayer* bulletLayer = BulletLayer::getInstance();
 	gameScene->addChild(bulletLayer);
+	PlaneLayer* planeLayer = PlaneLayer::getInstance();
+	gameScene->addChild(planeLayer);
 	EnemyLayer* enemyLayer = EnemyLayer::getInstance();
 	gameScene->addChild(enemyLayer);
+	ControlLayer* controlLayer = ControlLayer::getInstance();
+	gameScene->addChild(controlLayer);
 
 	// run
 	director->runWithScene(gameScene);
-	log("director->runWithScene(gameScene);");
 
 	return true;
 }

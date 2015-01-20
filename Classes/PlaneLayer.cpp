@@ -34,7 +34,7 @@ bool PlaneLayer::init() {
 }
 
 PlaneLayer::PlaneLayer() :
-		initHP(1000), myPlane(nullptr), winSize(Director::getInstance()->getWinSize()) {
+		initHP(10000), myPlane(nullptr), winSize(Director::getInstance()->getWinSize()) {
 }
 
 bool PlaneLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event) {

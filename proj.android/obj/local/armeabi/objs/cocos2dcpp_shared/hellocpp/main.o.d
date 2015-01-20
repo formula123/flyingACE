@@ -350,7 +350,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/hellocpp/main.o: \
  jni/../../Classes/GameBackgroundLayer.h jni/../../Classes/PlaneLayer.h \
  jni/../../Classes/PlaneUserData.h jni/../../Classes/BulletLayer.h \
  jni/../../Classes/BulletUserData.h jni/../../Classes/EnemyLayer.h \
- jni/../../Classes/EnemyUserData.h \
+ jni/../../Classes/EnemyUserData.h jni/../../Classes/ControlLayer.h \
+ /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/strstream \
+ /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h \
  jni/../../cocos2d/cocos/3d/../platform/android/jni/JniHelper.h
 
 jni/../../Classes/AppDelegate.h:
@@ -1062,5 +1064,11 @@ jni/../../Classes/BulletUserData.h:
 jni/../../Classes/EnemyLayer.h:
 
 jni/../../Classes/EnemyUserData.h:
+
+jni/../../Classes/ControlLayer.h:
+
+/home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/strstream:
+
+/home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h:
 
 jni/../../cocos2d/cocos/3d/../platform/android/jni/JniHelper.h:

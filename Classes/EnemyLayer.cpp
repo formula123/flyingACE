@@ -20,7 +20,7 @@ EnemyLayer* EnemyLayer::getInstance() {
 }
 
 EnemyLayer::EnemyLayer() :
-		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(0.1), deltaEnemyAppearProbability(0.005), nowEnemyAppearProbability(baseEnemyAppearProbability) {
+		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(0.4), deltaEnemyAppearProbability(0.005), nowEnemyAppearProbability(baseEnemyAppearProbability) {
 }
 
 EnemyLayer::~EnemyLayer() {
@@ -37,9 +37,9 @@ bool EnemyLayer::init() {
 	enemyFlyTime.push_back(10);
 	enemyFlyTime.push_back(10);
 	enemyFlyTime.push_back(5);
-	enemyInitHP.push_back(100);
 	enemyInitHP.push_back(200);
-	enemyInitHP.push_back(150);
+	enemyInitHP.push_back(400);
+	enemyInitHP.push_back(400);
 	startAddEnemy();
 	this->scheduleUpdate();
 
@@ -73,7 +73,7 @@ void EnemyLayer::enemyMoveFinished(Node* pSender) {
 }
 
 void EnemyLayer::startAddEnemy() {
-	this->schedule(schedule_selector(EnemyLayer::addEnemySprite), 0.2f);
+	this->schedule(schedule_selector(EnemyLayer::addEnemySprite), 0.5f);
 }
 
 void EnemyLayer::update(float useless) {
@@ -93,6 +93,9 @@ void EnemyLayer::update(float useless) {
 						FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
 						enemy->runAction(Sequence::create(actionExplosion, enemyRemove, NULL));
 						static_cast<EnemyUserData*>(enemy->getUserData())->setIsDeleting();
+
+						//摧毁敌机后加分
+						ControlLayer::getInstance()->addScoreBy(100);
 					}
 					//end读取子弹的伤害，给敌机造成伤害
 
@@ -103,21 +106,24 @@ void EnemyLayer::update(float useless) {
 
 				//判断我方飞机是否与敌机碰撞
 				if (enemy->getBoundingBox().intersectsRect(PlaneLayer::getInstance()->getMyPlane()->getBoundingBox())) {
-					//给敌机造成伤害
+					//给敌机造成碰撞伤害
 					if (static_cast<EnemyUserData*>(enemy->getUserData())->isAliveUnderAttack(9999) == false) {
 						enemy->stopAllActions();
 						FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
 						enemy->runAction(Sequence::create(actionExplosion, enemyRemove, NULL));
 						static_cast<EnemyUserData*>(enemy->getUserData())->setIsDeleting();
-					}
-					//end给敌机造成伤害
 
-					//给我方飞机造成伤害
+						//撞毁敌机后加分
+						ControlLayer::getInstance()->addScoreBy(100);
+					}
+					//end给敌机造成碰撞伤害
+
+					//给我方飞机造成碰撞伤害
 					if (static_cast<PlaneUserData*>(PlaneLayer::getInstance()->getMyPlane()->getUserData())->isAliveUnderAttack(100) == false) {
-						FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
+						//FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
 						PlaneLayer::getInstance()->getMyPlane()->runAction(Sequence::create(actionExplosion, NULL));
 					}
-					//end给我方飞机造成伤害
+					//end给我方飞机造成碰撞伤害
 
 				}
 				//end判断我方飞机是否与敌机碰撞

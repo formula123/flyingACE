@@ -6,6 +6,7 @@
 #include "PlaneLayer.h"
 #include "BulletLayer.h"
 #include "EnemyLayer.h"
+#include "ControlLayer.h"
 
 /**
  @brief    The cocos2d Application.

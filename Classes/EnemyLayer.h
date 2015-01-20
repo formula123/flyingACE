@@ -17,6 +17,7 @@
 #include "BulletUserData.h"
 #include "PlaneLayer.h"
 #include "PlaneUserData.h"
+#include "ControlLayer.h"
 
 
 class EnemyLayer : public cocos2d::Layer{
