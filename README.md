@@ -1,5 +1,5 @@
 # flyingACE (王牌飞行员)
-- Difficult in Chinese? -> [English Version](#flyingACE2)
+- Difficult in Chinese? -> [English Version](#EnglishTitle)
 - 这是一个使用Cocos2d-x-3.X 开发的飞机大战游戏，实际版本为Cocos2d-x3.3
 
 ---
@@ -45,7 +45,7 @@
 
 ---
 
-# flyingACE2
+# <a name="EnglishTitle"/>flyingACE ( Document in English )
 - This is a Cocos2dx game about aircraft fighting (using Cocos2dx binding C++). During this commit, the version of my Cocos2d is Cocos2d-x3.3.
 
 ---
