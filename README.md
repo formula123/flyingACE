@@ -41,7 +41,7 @@
 ---
 
 # 关键字 Keywords
-- cocos cocos2d cocos2dx cocos2dx3.0
+- 'cocos' 'cocos2d' 'cocos2dx' 'cocos2dx3.0'
 
 ---
 
@@ -81,5 +81,10 @@
 # Contact Me
 - Email: netbeen.cn@gmail.com
 - QQ: 394062113
+
+---
+
+# 关键字 Keywords
+- 'cocos' 'cocos2d' 'cocos2dx' 'cocos2dx3.0'
 
 ---
