@@ -41,7 +41,7 @@
 ---
 
 # 关键字 Keywords
-- 'cocos' 'cocos2d' 'cocos2dx' 'cocos2dx3.0'
+- `cocos` `cocos2d` `cocos2dx` `cocos2dx3.0`
 
 ---
 
@@ -85,6 +85,6 @@
 ---
 
 # 关键字 Keywords
-- 'cocos' 'cocos2d' 'cocos2dx' 'cocos2dx3.0'
+- `cocos` `cocos2d` `cocos2dx` `cocos2dx3.0`
 
 ---
