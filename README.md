@@ -44,7 +44,7 @@
 
 ---
 
-# flyingACE 
+# flyingACE ( Document in English )
 - This is a Cocos2dx game about aircraft fighting (using Cocos2dx binding C++). During this commit, the version of my Cocos2d is Cocos2d-x3.3.
 
 ---
