@@ -84,7 +84,7 @@
 
 ---
 
-# 关键字 Keywords
+# Keywords
 - `cocos` `cocos2d` `cocos2dx` `cocos2dx3.0`
 
 ---
