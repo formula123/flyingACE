@@ -12,6 +12,7 @@ class PlaneUserData {
 public:
 	PlaneUserData(int initHP);
 	bool isAliveUnderAttack(int damage);
+	int getHP();
 private:
 	int HP;
 };

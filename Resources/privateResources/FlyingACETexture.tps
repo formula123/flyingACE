@@ -203,7 +203,13 @@
             <filename>explosion07.png</filename>
             <filename>explosion08.png</filename>
             <filename>explosion09.png</filename>
-            <filename>bullet.png</filename>
+            <filename>bullet1.png</filename>
+            <filename>bullet3.png</filename>
+            <filename>bullet2.png</filename>
+            <filename>bigBomb.png</filename>
+            <filename>bulletUpgrade.png</filename>
+            <filename>pauseButton.png</filename>
+            <filename>startButton.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -13,7 +13,7 @@ USING_NS_CC;
 static ControlLayer* _sharedControlLayer = nullptr;
 
 ControlLayer::ControlLayer() :
-		score(0), scoreLabel(nullptr),pauseButtonItem(nullptr) {
+		score(0), scoreLabel(nullptr), pauseButtonItem(nullptr),HPIndicator(nullptr) {
 }
 
 ControlLayer* ControlLayer::getInstance() {
@@ -36,16 +36,38 @@ bool ControlLayer::init() {
 	scoreLabel->setPosition(Director::getInstance()->getWinSize().width - 50, Director::getInstance()->getWinSize().height - 50);
 	this->addChild(scoreLabel);
 
-	pauseButtonItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("pauseButton.png"),Sprite::createWithSpriteFrameName("pauseButton.png"), CC_CALLBACK_1(ControlLayer::menuPauseCallback, this));
+	pauseButtonItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("pauseButton.png"), Sprite::createWithSpriteFrameName("pauseButton.png"), CC_CALLBACK_1(ControlLayer::menuPauseCallback, this));
 	auto pauseButton = Menu::create(pauseButtonItem, nullptr);
 	pauseButton->setAnchorPoint(Point(0.0f, 1.0f));
-	pauseButton->setPosition(50, Director::getInstance()->getWinSize().height-50);
+	pauseButton->setPosition(75, Director::getInstance()->getWinSize().height - 75);
 	this->addChild(pauseButton);
 
+	Sprite* HPBottomSprite = Sprite::createWithSpriteFrameName("HPBottom.png");
+	HPBottomSprite->setPosition(100, 100);
+	this->addChild(HPBottomSprite);
+	Sprite* HP = Sprite::createWithSpriteFrameName("HP.png");
+	HPIndicator = ProgressTimer::create(HP);
+	HPIndicator->setType(ProgressTimer::Type::RADIAL);
+	HPIndicator->setPercentage(100);
+	HPIndicator->setPosition(100, 100);
+	addChild(HPIndicator, 0, 0);
+
+	Sprite* launchBottomSprite = Sprite::createWithSpriteFrameName("launchButton.png");
+	launchBottomSprite->setPosition(100, 100);
+	this->addChild(launchBottomSprite);
 	return true;
 }
 
-void ControlLayer::updateScore(){
+void ControlLayer::updateHPIndicator(){
+	int HP = static_cast<PlaneUserData*>(PlaneLayer::getInstance()->getMyPlane()->getUserData())->getHP();
+	int initHP = PlaneLayer::getInstance()->getInitHP();
+	float HPOld = HPIndicator->getPercentage();
+	float HPPercentage = static_cast<float>(HP) / static_cast<float>(initHP);
+	ProgressFromTo* animation = ProgressFromTo::create(0.2, HPOld, HPPercentage * 100);
+	HPIndicator->runAction(animation);
+}
+
+void ControlLayer::updateScore() {
 	std::string strScore;
 	std::strstream ss;
 	ss << this->score;
@@ -54,11 +76,11 @@ void ControlLayer::updateScore(){
 }
 
 void ControlLayer::menuPauseCallback(Ref* pSender) {
-	if(Director::getInstance()->isPaused()){
+	if (Director::getInstance()->isPaused()) {
 		Director::getInstance()->resume();
 		pauseButtonItem->setNormalImage(Sprite::createWithSpriteFrameName("pauseButton.png"));
 		pauseButtonItem->setSelectedImage(Sprite::createWithSpriteFrameName("pauseButton.png"));
-	}else{
+	} else {
 		Director::getInstance()->pause();
 		pauseButtonItem->setNormalImage(Sprite::createWithSpriteFrameName("startButton.png"));
 		pauseButtonItem->setSelectedImage(Sprite::createWithSpriteFrameName("startButton.png"));

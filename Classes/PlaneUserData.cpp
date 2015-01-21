@@ -7,14 +7,20 @@
 
 #include "PlaneUserData.h"
 
+#include "cocos2d.h"
 PlaneUserData::PlaneUserData(int initHP):HP(initHP){
 }
 
 bool PlaneUserData::isAliveUnderAttack(int damage){
+	cocos2d::log("damage");
 	this->HP -= damage;
 	if(this->HP <= 0){
 		return false;
 	}else{
 		return true;
 	}
+}
+
+int PlaneUserData::getHP(){
+	return this->HP;
 }
