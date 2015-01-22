@@ -98,3 +98,8 @@ void ControlLayer::menuLaunchCallback(Ref* pSender){
 	launchButtonItem->setEnabled(false);
 	launchButton->setEnabled(false);
 }
+
+void ControlLayer::setLaunchButtonEnable(){
+	launchButtonItem->setEnabled(true);
+	launchButton->setEnabled(true);
+}

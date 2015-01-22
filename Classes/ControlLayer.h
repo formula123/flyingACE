@@ -20,6 +20,7 @@ public:
 	static ControlLayer* getInstance();
 	void addScoreBy(int addScore);
 	void updateHPIndicator();
+	void setLaunchButtonEnable();
 private:
 	int score;
 	cocos2d::Label* scoreLabel;

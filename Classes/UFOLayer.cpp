@@ -21,7 +21,6 @@ UFOLayer* UFOLayer::getInstance() {
 
 UFOLayer::UFOLayer() :
 		winSize(Director::getInstance()->getWinSize()) {
-
 }
 
 bool UFOLayer::init() {
@@ -33,6 +32,7 @@ bool UFOLayer::init() {
 	giftFlyTime.push_back(7);
 	giftFlyTime.push_back(7);
 
+	this->scheduleUpdate();
 	return true;
 }
 
@@ -60,4 +60,15 @@ void UFOLayer::giftMoveFinished(Node* pSender) {
 	Sprite* gift = (Sprite*) pSender;
 	allGift.eraseObject(gift);
 	this->removeChild(gift, true);
+}
+
+void UFOLayer::update(float useless) {
+	for (Sprite* gift : this->allGift) {
+		//判断我方飞机是否与gift碰撞
+		if (gift->getBoundingBox().intersectsRect(PlaneLayer::getInstance()->getMyPlane()->getBoundingBox())) {
+			ControlLayer::getInstance()->setLaunchButtonEnable();
+			this->giftMoveFinished(gift);
+		}
+		//end判断我方飞机是否与gift碰撞
+	}
 }

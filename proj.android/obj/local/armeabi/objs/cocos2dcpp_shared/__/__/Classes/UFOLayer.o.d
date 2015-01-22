@@ -312,7 +312,12 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/UFOLayer.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCBool.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
- jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h
+ jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
+ jni/../../Classes/ControlLayer.h \
+ /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/strstream \
+ /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h \
+ jni/../../Classes/GameBackgroundLayer.h jni/../../Classes/PlaneLayer.h \
+ jni/../../Classes/PlaneUserData.h
 
 jni/../../Classes/UFOLayer.h:
 
@@ -941,3 +946,15 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCString.h:
 jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h:
 
 jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
+
+jni/../../Classes/ControlLayer.h:
+
+/home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/strstream:
+
+/home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h:
+
+jni/../../Classes/GameBackgroundLayer.h:
+
+jni/../../Classes/PlaneLayer.h:
+
+jni/../../Classes/PlaneUserData.h:

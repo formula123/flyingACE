@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 #include "cocos2d.h"
+#include "ControlLayer.h"
 
 class UFOLayer : public cocos2d::Layer{
 public:
@@ -23,8 +24,9 @@ private:
 	cocos2d::Size winSize;
 
 	virtual bool init() override;
-	void giftMoveFinished(Node* pSender);
+	void giftMoveFinished(cocos2d::Node* pSender);
 	UFOLayer();
+	void update(float useless);
 };
 
 #endif /* UFOLAYER_H_ */
