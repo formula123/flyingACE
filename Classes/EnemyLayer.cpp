@@ -119,7 +119,9 @@ void EnemyLayer::update(float useless) {
 
 					//给我方飞机造成碰撞伤害
 					if (static_cast<PlaneUserData*>(PlaneLayer::getInstance()->getMyPlane()->getUserData())->isAliveUnderAttack(100) == false) {
+						BulletLayer::getInstance()->stopShooting();
 						PlaneLayer::getInstance()->getMyPlane()->runAction(Sequence::create(actionExplosion, NULL));
+						//飞机爆炸后逻辑未完成，待开发
 					}
 					//end给我方飞机造成碰撞伤害
 

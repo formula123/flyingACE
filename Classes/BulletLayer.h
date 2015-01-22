@@ -18,6 +18,7 @@ public:
 
 	static BulletLayer* getInstance();
 	void bulletMoveFinished(Node* pSender);
+	void stopShooting();
 
 private:
 	cocos2d::SpriteBatchNode* bulletBatchNode;
@@ -27,7 +28,7 @@ private:
 	~BulletLayer();
 	virtual bool init() override;
 	void startShooting();
-	void stopShooting();
+
 	void addBullet(float useless);
 };
 

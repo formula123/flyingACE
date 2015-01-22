@@ -7,6 +7,7 @@
 #include "BulletLayer.h"
 #include "EnemyLayer.h"
 #include "ControlLayer.h"
+#include "UFOLayer.h"
 
 /**
  @brief    The cocos2d Application.

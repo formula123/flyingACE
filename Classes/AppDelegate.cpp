@@ -51,6 +51,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	GameBackgroundLayer* backgroundLayer = GameBackgroundLayer::getInstance();
 	gameScene->addChild(backgroundLayer);
+	UFOLayer* ufoLayer = UFOLayer::getInstance();
+	gameScene->addChild(ufoLayer);
 	BulletLayer* bulletLayer = BulletLayer::getInstance();
 	gameScene->addChild(bulletLayer);
 	PlaneLayer* planeLayer = PlaneLayer::getInstance();

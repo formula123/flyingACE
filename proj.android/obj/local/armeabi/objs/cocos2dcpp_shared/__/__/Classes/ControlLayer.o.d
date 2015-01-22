@@ -318,8 +318,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/ControlLayer.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
  jni/../../Classes/GameBackgroundLayer.h jni/../../Classes/PlaneLayer.h \
- jni/../../Classes/PlaneUserData.h \
- /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream
+ jni/../../Classes/PlaneUserData.h jni/../../Classes/UFOLayer.h
 
 jni/../../Classes/ControlLayer.h:
 
@@ -963,4 +962,4 @@ jni/../../Classes/PlaneLayer.h:
 
 jni/../../Classes/PlaneUserData.h:
 
-/home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
+jni/../../Classes/UFOLayer.h:
