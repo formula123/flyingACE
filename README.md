@@ -25,6 +25,7 @@
 - GameBackgroundLayer: 布景层，实现地图加载，循环滚动
 - PlaneLayer: 飞机层，渲染飞机动画，响应用户滑屏操作
 - PlaneUserData: 飞机数据
+- UFOLayer: 不明飞行物层，目前用于投放武器加强的buff和大招buff
 
 ---
 
@@ -70,6 +71,7 @@
 - GameBackgroundLayer: Background Layer, auto loading the background image and rolling.
 - PlaneLayer: Plane Layer, Interactive layer of the game.
 - PlaneUserData: The datastruct defined by myself. Recording the some paramater of enemy plane, like HP and others. 
+- UFOLayer: This Layer is actived by some sprcific conditions, now, this layer is used for some gift with buffs, like enhance the bullet or get the big bomb.
 
 ---
 
