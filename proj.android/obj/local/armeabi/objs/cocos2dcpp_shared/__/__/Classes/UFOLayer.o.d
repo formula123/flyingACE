@@ -317,7 +317,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/UFOLayer.o: \
  /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/strstream \
  /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h \
  jni/../../Classes/GameBackgroundLayer.h jni/../../Classes/PlaneLayer.h \
- jni/../../Classes/PlaneUserData.h
+ jni/../../Classes/PlaneUserData.h jni/../../Classes/UFOUserData.h \
+ jni/../../Classes/BulletLayer.h jni/../../Classes/BulletUserData.h
 
 jni/../../Classes/UFOLayer.h:
 
@@ -958,3 +959,9 @@ jni/../../Classes/GameBackgroundLayer.h:
 jni/../../Classes/PlaneLayer.h:
 
 jni/../../Classes/PlaneUserData.h:
+
+jni/../../Classes/UFOUserData.h:
+
+jni/../../Classes/BulletLayer.h:
+
+jni/../../Classes/BulletUserData.h:

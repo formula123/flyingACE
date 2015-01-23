@@ -318,7 +318,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/ControlLayer.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
  jni/../../Classes/GameBackgroundLayer.h jni/../../Classes/PlaneLayer.h \
- jni/../../Classes/PlaneUserData.h jni/../../Classes/UFOLayer.h
+ jni/../../Classes/PlaneUserData.h jni/../../Classes/UFOLayer.h \
+ jni/../../Classes/UFOUserData.h jni/../../Classes/BulletLayer.h \
+ jni/../../Classes/BulletUserData.h
 
 jni/../../Classes/ControlLayer.h:
 
@@ -963,3 +965,9 @@ jni/../../Classes/PlaneLayer.h:
 jni/../../Classes/PlaneUserData.h:
 
 jni/../../Classes/UFOLayer.h:
+
+jni/../../Classes/UFOUserData.h:
+
+jni/../../Classes/BulletLayer.h:
+
+jni/../../Classes/BulletUserData.h:

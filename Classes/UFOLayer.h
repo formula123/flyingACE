@@ -12,6 +12,8 @@
 #include <vector>
 #include "cocos2d.h"
 #include "ControlLayer.h"
+#include "UFOUserData.h"
+#include "BulletLayer.h"
 
 class UFOLayer : public cocos2d::Layer{
 public:

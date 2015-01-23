@@ -10,10 +10,12 @@
 
 class BulletUserData {
 public:
-	BulletUserData(int initDamage);
+	BulletUserData(int initDamage, int initBulletLevel);
 	int getDamage();
+	int getBulletLevel();
 private:
 	int damage;
+	int bulletLevel;
 };
 
 #endif /* BULLETUSERDATA_H_ */

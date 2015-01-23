@@ -19,11 +19,15 @@ public:
 	static BulletLayer* getInstance();
 	void bulletMoveFinished(Node* pSender);
 	void stopShooting();
+	void setBulletLevelUP();
 
 private:
 	cocos2d::SpriteBatchNode* bulletBatchNode;
 	int eachBulletDamage;
 	std::vector<std::string> bulletTextureName;
+	int nowBulletLevel;
+
+	std::vector<cocos2d::SpriteBatchNode*> bulletBatchNodeVector;
 
 	BulletLayer();
 	~BulletLayer();
