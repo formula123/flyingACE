@@ -20,7 +20,7 @@ EnemyLayer* EnemyLayer::getInstance() {
 }
 
 EnemyLayer::EnemyLayer() :
-		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(0.4), deltaEnemyAppearProbability(0.005), nowEnemyAppearProbability(baseEnemyAppearProbability) {
+		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(0.4), deltaEnemyAppearProbability(0.007), nowEnemyAppearProbability(baseEnemyAppearProbability) {
 }
 
 EnemyLayer::~EnemyLayer() {
@@ -42,8 +42,6 @@ bool EnemyLayer::init() {
 	enemyInitHP.push_back(400);
 	startAddEnemy();
 	this->scheduleUpdate();
-
-	addBossSprite();
 
 	return true;
 }
@@ -67,6 +65,7 @@ void EnemyLayer::addEnemySprite(float useless) {
 	nowEnemyAppearProbability += deltaEnemyAppearProbability;
 	if(nowEnemyAppearProbability > 1) {
 		this->stopAddEnemy();
+		addBossSprite();
 	}
 }
 

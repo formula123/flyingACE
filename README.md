@@ -26,6 +26,7 @@
 - PlaneLayer: 飞机层，渲染飞机动画，响应用户滑屏操作
 - PlaneUserData: 飞机数据
 - UFOLayer: 不明飞行物层，目前用于投放武器加强的buff和大招buff
+- UFOUserData: 数据记录类，用于记录gift的类型
 
 ---
 
@@ -72,6 +73,7 @@
 - PlaneLayer: Plane Layer, Interactive layer of the game.
 - PlaneUserData: The datastruct defined by myself. Recording the some paramater of enemy plane, like HP and others. 
 - UFOLayer: This Layer is actived by some sprcific conditions, now, this layer is used for some gift with buffs, like enhance the bullet or get the big bomb.
+- UFOUserData: The data structure recording the kind of UFO gift.
 
 ---
 
