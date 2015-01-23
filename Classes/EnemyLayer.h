@@ -41,6 +41,7 @@ private:
 	void startAddEnemy();
 	void stopAddEnemy();
 	void update(float useless) override;
+	void addBossSprite();
 
 };
 

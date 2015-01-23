@@ -55,10 +55,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	gameScene->addChild(ufoLayer);
 	BulletLayer* bulletLayer = BulletLayer::getInstance();
 	gameScene->addChild(bulletLayer);
-	PlaneLayer* planeLayer = PlaneLayer::getInstance();
-	gameScene->addChild(planeLayer);
 	EnemyLayer* enemyLayer = EnemyLayer::getInstance();
 	gameScene->addChild(enemyLayer);
+	PlaneLayer* planeLayer = PlaneLayer::getInstance();
+	gameScene->addChild(planeLayer);
 	ControlLayer* controlLayer = ControlLayer::getInstance();
 	gameScene->addChild(controlLayer);
 

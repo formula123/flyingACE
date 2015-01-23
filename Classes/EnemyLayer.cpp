@@ -43,6 +43,8 @@ bool EnemyLayer::init() {
 	startAddEnemy();
 	this->scheduleUpdate();
 
+	addBossSprite();
+
 	return true;
 }
 
@@ -63,7 +65,7 @@ void EnemyLayer::addEnemySprite(float useless) {
 		enemySprite->runAction(enemyAction);
 	}
 	nowEnemyAppearProbability += deltaEnemyAppearProbability;
-	if(nowEnemyAppearProbability > 1){
+	if(nowEnemyAppearProbability > 1) {
 		this->stopAddEnemy();
 	}
 }
@@ -111,9 +113,9 @@ void EnemyLayer::update(float useless) {
 				//end判断子弹是否与敌机碰撞
 
 				//判断我方飞机是否与敌机碰撞
-				if (enemy->getBoundingBox().intersectsRect(PlaneLayer::getInstance()->getMyPlane()->getBoundingBox())) {
+				if (enemy->getBoundingBox().intersectsRect(PlaneLayer::getInstance()->getMyPlane()->getBoundingBox()) && static_cast<PlaneUserData*>(PlaneLayer::getInstance()->getMyPlane()->getUserData())->getHP() > 0) {
 					//给敌机造成碰撞伤害
-					if (static_cast<EnemyUserData*>(enemy->getUserData())->isAliveUnderAttack(9999) == false) {
+					if (static_cast<EnemyUserData*>(enemy->getUserData())->isAliveUnderAttack(400) == false) {
 						enemy->stopAllActions();
 						static_cast<EnemyUserData*>(enemy->getUserData())->setIsDeleting();
 						enemy->runAction(Sequence::create(actionExplosion, enemyRemove, NULL));
@@ -124,7 +126,7 @@ void EnemyLayer::update(float useless) {
 					//end给敌机造成碰撞伤害
 
 					//给我方飞机造成碰撞伤害
-					if (static_cast<PlaneUserData*>(PlaneLayer::getInstance()->getMyPlane()->getUserData())->isAliveUnderAttack(100) == false) {
+					if (static_cast<PlaneUserData*>(PlaneLayer::getInstance()->getMyPlane()->getUserData())->isAliveUnderAttack(200) == false) {
 						BulletLayer::getInstance()->stopShooting();
 						PlaneLayer::getInstance()->getMyPlane()->runAction(Sequence::create(actionExplosion, NULL));
 						//飞机爆炸后逻辑未完成，待开发
@@ -140,4 +142,17 @@ void EnemyLayer::update(float useless) {
 		//end判断敌机是否正在爆炸
 
 	}
+}
+
+void EnemyLayer::addBossSprite() {
+	Sprite* bossSprite = Sprite::createWithSpriteFrameName("enemyBoss.png");
+	bossSprite->setPosition(winSize.width / 2, winSize.height + bossSprite->getContentSize().height);
+	bossSprite->setUserData(new EnemyUserData(6000));
+	this->addChild(bossSprite);
+	allEnemy.pushBack(bossSprite);
+
+	FiniteTimeAction* enemyMove = MoveTo::create(15, Point(winSize.width / 2, -bossSprite->getContentSize().height / 2));
+	FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
+	Action* enemyAction = Sequence::create(enemyMove, enemyRemove, NULL);
+	bossSprite->runAction(enemyAction);
 }
