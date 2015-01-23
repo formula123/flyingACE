@@ -30,8 +30,8 @@
 
 ---
 
-# 战斗截图
-![screenshot](http://ww3.sinaimg.cn/large/9e2d8c2djw1eojz7il3v5j20gz0nmagc.jpg "战斗截图")
+# GUI截图
+![screenshot](http://ww3.sinaimg.cn/large/9e2d8c2djw1eojz7il3v5jGUIgz0nmagc.jpg "GUI截图")
 
 ---
 
