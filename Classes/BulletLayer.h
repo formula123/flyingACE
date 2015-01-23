@@ -23,6 +23,7 @@ public:
 private:
 	cocos2d::SpriteBatchNode* bulletBatchNode;
 	int eachBulletDamage;
+	std::vector<std::string> bulletTextureName;
 
 	BulletLayer();
 	~BulletLayer();

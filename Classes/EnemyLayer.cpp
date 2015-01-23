@@ -63,6 +63,9 @@ void EnemyLayer::addEnemySprite(float useless) {
 		enemySprite->runAction(enemyAction);
 	}
 	nowEnemyAppearProbability += deltaEnemyAppearProbability;
+	if(nowEnemyAppearProbability > 1){
+		this->stopAddEnemy();
+	}
 }
 
 void EnemyLayer::enemyMoveFinished(Node* pSender) {
@@ -74,6 +77,10 @@ void EnemyLayer::enemyMoveFinished(Node* pSender) {
 
 void EnemyLayer::startAddEnemy() {
 	this->schedule(schedule_selector(EnemyLayer::addEnemySprite), 0.5f);
+}
+
+void EnemyLayer::stopAddEnemy() {
+	this->unschedule(schedule_selector(EnemyLayer::addEnemySprite));
 }
 
 void EnemyLayer::update(float useless) {
@@ -93,7 +100,6 @@ void EnemyLayer::update(float useless) {
 						enemy->stopAllActions();
 						static_cast<EnemyUserData*>(enemy->getUserData())->setIsDeleting();
 						enemy->runAction(Sequence::create(actionExplosion, enemyRemove, NULL));
-
 						//摧毁敌机后加分
 						ControlLayer::getInstance()->addScoreBy(100);
 					}

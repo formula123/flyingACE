@@ -39,6 +39,7 @@ private:
 	void addEnemySprite(float useless);
 	void enemyMoveFinished(Node* pSender);
 	void startAddEnemy();
+	void stopAddEnemy();
 	void update(float useless) override;
 
 };

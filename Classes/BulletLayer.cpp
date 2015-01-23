@@ -20,7 +20,7 @@ BulletLayer* BulletLayer::getInstance() {
 }
 
 bool BulletLayer::init() {
-	bulletBatchNode = SpriteBatchNode::createWithTexture(SpriteFrameCache::getInstance()->getSpriteFrameByName("bullet3.png")->getTexture());
+	bulletBatchNode = SpriteBatchNode::createWithTexture(SpriteFrameCache::getInstance()->getSpriteFrameByName("bullet1.png")->getTexture());
 	this->addChild(bulletBatchNode);
 	this->startShooting();
 	return true;
