@@ -28,7 +28,7 @@ private:
 	virtual bool init() override;
 	void giftMoveFinished(cocos2d::Node* pSender);
 	UFOLayer();
-	void update(float useless);
+	void update(float useless) override;
 };
 
 #endif /* UFOLAYER_H_ */

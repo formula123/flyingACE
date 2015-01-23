@@ -39,7 +39,7 @@ bool UFOLayer::init() {
 void UFOLayer::addGiftSprite() {
 	float testProbability = CCRANDOM_0_1();
 	int giftKinds;
-	if(testProbability < 0.5) {
+	if(testProbability < 1) {
 		giftKinds = 0;
 	} else {
 		giftKinds = 1;

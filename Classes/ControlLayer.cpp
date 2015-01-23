@@ -97,6 +97,7 @@ void ControlLayer::menuPauseCallback(Ref* pSender) {
 void ControlLayer::menuLaunchCallback(Ref* pSender){
 	launchButtonItem->setEnabled(false);
 	launchButton->setEnabled(false);
+	BulletLayer::getInstance()->launchBigBomb();
 }
 
 void ControlLayer::setLaunchButtonEnable(){
