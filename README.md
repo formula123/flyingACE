@@ -30,6 +30,11 @@
 
 ---
 
+# 战斗截图
+![screenshot](http://ww3.sinaimg.cn/large/9e2d8c2djw1eojz7il3v5j20gz0nmagc.jpg "战斗截图")
+
+---
+
 # 鸣谢 Thanks
 - 特别感谢TexturePacker的作者Andreas Löw为本次开发提供Pro版的序列号
 - Thanks to Mr. Andreas Löw (the author of TexturePacker), for prividing the free key of TexturePacker pro.
@@ -76,6 +81,9 @@
 - UFOUserData: The data structure recording the kind of UFO gift.
 
 ---
+
+# Screenshot
+![Screenshot](http://ww3.sinaimg.cn/large/9e2d8c2djw1eojz7il3v5j20gz0nmagc.jpg "Screenshot")
 
 # Thanks
 - Thanks to Mr. Andreas Löw (the author of TexturePacker), for prividing the free key of TexturePacker pro.
