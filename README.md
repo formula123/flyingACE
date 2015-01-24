@@ -31,7 +31,8 @@
 ---
 
 # GUI截图
-![screenshot](http://ww3.sinaimg.cn/large/9e2d8c2djw1eojz7il3v5j20gz0nmagc.jpg "GUI截图")
+![screenshot](http://ww4.sinaimg.cn/large/9e2d8c2djw1eojz8l24epj20gz0nmag7.jpg "GUI截图")
+
 
 ---
 
@@ -83,7 +84,7 @@
 ---
 
 # Screenshot
-![Screenshot](http://ww3.sinaimg.cn/large/9e2d8c2djw1eojz7il3v5j20gz0nmagc.jpg "Screenshot")
+![Screenshot](http://ww4.sinaimg.cn/large/9e2d8c2djw1eojz8l24epj20gz0nmag7.jpg "Screenshot")
 
 # Thanks
 - Thanks to Mr. Andreas Löw (the author of TexturePacker), for prividing the free key of TexturePacker pro.
