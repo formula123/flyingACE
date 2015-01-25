@@ -2,12 +2,6 @@
 #define  _APP_DELEGATE_H_
 
 #include "cocos2d.h"
-#include "GameBackgroundLayer.h"
-#include "PlaneLayer.h"
-#include "BulletLayer.h"
-#include "EnemyLayer.h"
-#include "ControlLayer.h"
-#include "UFOLayer.h"
 #include "GameScene.h"
 
 /**
@@ -17,7 +11,6 @@
  */
 class AppDelegate: private cocos2d::Application {
 public:
-
 	AppDelegate();
 	virtual ~AppDelegate();
 

@@ -35,6 +35,7 @@ private:
 	ControlLayer();
 	virtual bool init() override;
 	void menuLaunchCallback(cocos2d::Ref* pSender);
+	virtual void onKeyReleased(cocos2d::EventKeyboard::KeyCode keycode, cocos2d::Event* event) override;//对应back键
 };
 
 #endif /* CONTROLLAYER_H_ */

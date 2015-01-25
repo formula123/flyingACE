@@ -30,6 +30,10 @@ void ControlLayer::addScoreBy(int addScore) {
 }
 
 bool ControlLayer::init() {
+	auto listenerkeyPad = EventListenerKeyboard::create();
+	listenerkeyPad->onKeyReleased = CC_CALLBACK_2(ControlLayer::onKeyReleased, this);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listenerkeyPad, this);
+
 	scoreLabel = Label::createWithTTF("0", "fonts/MarkerFelt.ttf", 60);
 	scoreLabel->setAnchorPoint(Point(1.0f, 1.0f));
 	scoreLabel->setPosition(Director::getInstance()->getWinSize().width - 50, Director::getInstance()->getWinSize().height - 50);
@@ -103,4 +107,14 @@ void ControlLayer::menuLaunchCallback(Ref* pSender){
 void ControlLayer::setLaunchButtonEnable(){
 	launchButtonItem->setEnabled(true);
 	launchButton->setEnabled(true);
+}
+
+void ControlLayer::onKeyReleased(EventKeyboard::KeyCode keycode, Event* event){
+	switch (keycode) {
+		case EventKeyboard::KeyCode::KEY_BACK:
+			Director::getInstance()->end();
+			break;
+		default:
+			break;
+	}
 }

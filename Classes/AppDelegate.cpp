@@ -21,7 +21,7 @@ void AppDelegate::initGLContextAttrs() {
 
 bool AppDelegate::applicationDidFinishLaunching() {
 	// initialize director
-	auto director = Director::getInstance();
+	Director* director = Director::getInstance();
 	auto glview = director->getOpenGLView();
 	if (!glview) {
 		glview = GLViewImpl::createWithRect("Flying ACE", Rect(0, 0, 720, 1280));
@@ -47,24 +47,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Animation* explosionAnimation = Animation::createWithSpriteFrames(explosionAnimationVector, 0.5f / 9.0f, 1);
 	AnimationCache::getInstance()->addAnimation(explosionAnimation,"explosion");
 
-	// create a scene. it's an autorelease object
-	/*gameScene = Scene::create();
-	resultScene = Scene::create();*/
-
 	Scene* gameScene = GameScene::getInstance();
-
-	/*GameBackgroundLayer* backgroundLayer = GameBackgroundLayer::getInstance();
-	gameScene->addChild(backgroundLayer);
-	UFOLayer* ufoLayer = UFOLayer::getInstance();
-	gameScene->addChild(ufoLayer);
-	BulletLayer* bulletLayer = BulletLayer::getInstance();
-	gameScene->addChild(bulletLayer);
-	EnemyLayer* enemyLayer = EnemyLayer::getInstance();
-	gameScene->addChild(enemyLayer);
-	PlaneLayer* planeLayer = PlaneLayer::getInstance();
-	gameScene->addChild(planeLayer);
-	ControlLayer* controlLayer = ControlLayer::getInstance();
-	gameScene->addChild(controlLayer);*/
 
 	// run
 	director->runWithScene(gameScene);
