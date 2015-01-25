@@ -21,6 +21,6 @@ bool PlaneUserData::isAliveUnderAttack(int damage){
 	}
 }
 
-int PlaneUserData::getHP(){
+int PlaneUserData::getHP() const{
 	return this->HP;
 }

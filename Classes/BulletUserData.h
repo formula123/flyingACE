@@ -11,8 +11,8 @@
 class BulletUserData {
 public:
 	BulletUserData(int initDamage, int initBulletLevel);
-	int getDamage();
-	int getBulletLevel();
+	int getDamage() const;
+	int getBulletLevel() const;
 private:
 	int damage;
 	int bulletLevel;

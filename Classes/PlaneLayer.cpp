@@ -41,7 +41,7 @@ bool PlaneLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_even
 	return true;
 }
 
-int PlaneLayer::getInitHP(){
+int PlaneLayer::getInitHP() const{
 	return this->initHP;
 }
 

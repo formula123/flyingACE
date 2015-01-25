@@ -33,6 +33,7 @@ private:
 	std::vector<int> enemyInitHP;
 	cocos2d::Vector<cocos2d::Sprite*> allEnemy;
 	const cocos2d::Size winSize;
+	bool bossAppeared;
 
 	EnemyLayer();
 	~EnemyLayer();

@@ -12,7 +12,7 @@ class EnemyUserData {
 public:
 	EnemyUserData(int initHP);
 	void setIsDeleting();
-	bool getIsDeleting();
+	bool getIsDeleting() const;
 	bool isAliveUnderAttack(int damage);
 private:
 	int HP;

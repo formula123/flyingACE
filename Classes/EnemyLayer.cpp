@@ -20,7 +20,7 @@ EnemyLayer* EnemyLayer::getInstance() {
 }
 
 EnemyLayer::EnemyLayer() :
-		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(0.4), deltaEnemyAppearProbability(0.007), nowEnemyAppearProbability(baseEnemyAppearProbability) {
+		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(0.4), deltaEnemyAppearProbability(0.007), nowEnemyAppearProbability(baseEnemyAppearProbability),bossAppeared(false) {
 }
 
 EnemyLayer::~EnemyLayer() {
@@ -89,6 +89,12 @@ void EnemyLayer::update(float useless) {
 	animationExplosion->setRestoreOriginalFrame(false);
 	animationExplosion->setDelayPerUnit(0.5f / 9.0f);
 	auto actionExplosion = Animate::create(animationExplosion);
+	//判断是否已经通关
+	if((allEnemy.empty() == true) && (this->bossAppeared == true)){
+		scheduleOnce(schedule_selector(EnemyLayer::changeSceneCallBack),1.0f);
+	}
+
+	//遍历敌机
 	for (Sprite* enemy : this->allEnemy) {
 		//判断敌机是否正在爆炸
 		if (static_cast<EnemyUserData*>(enemy->getUserData())->getIsDeleting() == false) {
@@ -154,6 +160,8 @@ void EnemyLayer::addBossSprite() {
 	FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
 	Action* enemyAction = Sequence::create(enemyMove, enemyRemove, NULL);
 	bossSprite->runAction(enemyAction);
+
+	this->bossAppeared = true;
 }
 
 void EnemyLayer::changeSceneCallBack(float useless){
