@@ -8,6 +8,7 @@
 #include "EnemyLayer.h"
 #include "ControlLayer.h"
 #include "UFOLayer.h"
+#include "GameScene.h"
 
 /**
  @brief    The cocos2d Application.
@@ -16,6 +17,7 @@
  */
 class AppDelegate: private cocos2d::Application {
 public:
+
 	AppDelegate();
 	virtual ~AppDelegate();
 

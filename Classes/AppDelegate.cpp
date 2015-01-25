@@ -34,11 +34,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// set FPS. the default value is 1.0/60 if you don't call this
 	director->setAnimationInterval(1.0 / 60);
 
+	//读取纹理贴度集合
 	cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture.plist");
 
 	Vector<SpriteFrame*> explosionAnimationVector;
 	for (int i = 0; i < 9; i++){
-		    char animitionFileName[128] = {0};
+		    char animitionFileName[32] = {0};
 		    sprintf(animitionFileName, "explosion%02d.png", i+1);
 		    SpriteFrame* fm = SpriteFrameCache::getInstance()->getSpriteFrameByName(animitionFileName);
 		    explosionAnimationVector.pushBack(fm);
@@ -47,9 +48,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	AnimationCache::getInstance()->addAnimation(explosionAnimation,"explosion");
 
 	// create a scene. it's an autorelease object
-	Scene* gameScene = Scene::create();
+	/*gameScene = Scene::create();
+	resultScene = Scene::create();*/
 
-	GameBackgroundLayer* backgroundLayer = GameBackgroundLayer::getInstance();
+	Scene* gameScene = GameScene::getInstance();
+
+	/*GameBackgroundLayer* backgroundLayer = GameBackgroundLayer::getInstance();
 	gameScene->addChild(backgroundLayer);
 	UFOLayer* ufoLayer = UFOLayer::getInstance();
 	gameScene->addChild(ufoLayer);
@@ -60,7 +64,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	PlaneLayer* planeLayer = PlaneLayer::getInstance();
 	gameScene->addChild(planeLayer);
 	ControlLayer* controlLayer = ControlLayer::getInstance();
-	gameScene->addChild(controlLayer);
+	gameScene->addChild(controlLayer);*/
 
 	// run
 	director->runWithScene(gameScene);

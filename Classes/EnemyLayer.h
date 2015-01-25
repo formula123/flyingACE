@@ -18,6 +18,7 @@
 #include "PlaneLayer.h"
 #include "PlaneUserData.h"
 #include "ControlLayer.h"
+#include "ResultScene.h"
 
 
 class EnemyLayer : public cocos2d::Layer{
@@ -42,6 +43,7 @@ private:
 	void stopAddEnemy();
 	void update(float useless) override;
 	void addBossSprite();
+	void changeSceneCallBack(float useless);
 
 };
 

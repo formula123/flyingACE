@@ -21,7 +21,9 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/PlaneUserData.cpp \
                    ../../Classes/ControlLayer.cpp \
                    ../../Classes/UFOLayer.cpp \
-                   ../../Classes/UFOUserData.cpp
+                   ../../Classes/UFOUserData.cpp \
+                   ../../Classes/GameScene.cpp \
+                   ../../Classes/ResultScene.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 

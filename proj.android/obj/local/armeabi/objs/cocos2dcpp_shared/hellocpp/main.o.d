@@ -354,6 +354,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/hellocpp/main.o: \
  /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/strstream \
  /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h \
  jni/../../Classes/UFOLayer.h jni/../../Classes/UFOUserData.h \
+ jni/../../Classes/ResultScene.h jni/../../Classes/GameScene.h \
  jni/../../cocos2d/cocos/3d/../platform/android/jni/JniHelper.h
 
 jni/../../Classes/AppDelegate.h:
@@ -1075,5 +1076,9 @@ jni/../../Classes/ControlLayer.h:
 jni/../../Classes/UFOLayer.h:
 
 jni/../../Classes/UFOUserData.h:
+
+jni/../../Classes/ResultScene.h:
+
+jni/../../Classes/GameScene.h:
 
 jni/../../cocos2d/cocos/3d/../platform/android/jni/JniHelper.h:

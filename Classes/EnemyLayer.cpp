@@ -128,7 +128,7 @@ void EnemyLayer::update(float useless) {
 					if (static_cast<PlaneUserData*>(PlaneLayer::getInstance()->getMyPlane()->getUserData())->isAliveUnderAttack(200) == false) {
 						BulletLayer::getInstance()->stopShooting();
 						PlaneLayer::getInstance()->getMyPlane()->runAction(Sequence::create(actionExplosion, NULL));
-						//飞机爆炸后逻辑未完成，待开发
+						scheduleOnce(schedule_selector(EnemyLayer::changeSceneCallBack),1.0f);
 					}
 					//end给我方飞机造成碰撞伤害
 
@@ -154,4 +154,9 @@ void EnemyLayer::addBossSprite() {
 	FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
 	Action* enemyAction = Sequence::create(enemyMove, enemyRemove, NULL);
 	bossSprite->runAction(enemyAction);
+}
+
+void EnemyLayer::changeSceneCallBack(float useless){
+	Scene* resultSceneWithAnimation = TransitionFade::create(2.0f,ResultScene::getInstance());
+	Director::getInstance()->replaceScene(resultSceneWithAnimation);
 }
