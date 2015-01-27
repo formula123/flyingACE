@@ -23,7 +23,11 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/UFOLayer.cpp \
                    ../../Classes/UFOUserData.cpp \
                    ../../Classes/GameScene.cpp \
-                   ../../Classes/ResultScene.cpp
+                   ../../Classes/ResultScene.cpp \
+                   ../../Classes/WelcomeScene.cpp \
+                   ../../Classes/WelcomeButtonLayer.cpp \
+                   ../../Classes/ResultButtonLayer.cpp \
+                   ../../Classes/WelcomeBackgroundLayer.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 

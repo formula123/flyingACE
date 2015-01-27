@@ -9,10 +9,13 @@
 #define RESULTSCENE_H_
 
 #include "cocos2d.h"
+#include "ResultButtonLayer.h"
 
 class ResultScene :public cocos2d::Scene{
 public:
-	static cocos2d::Scene* getInstance();
+	static Scene* create();
+private:
+	static Scene* resultScene;
 };
 
 #endif /* RESULTSCENE_H_ */

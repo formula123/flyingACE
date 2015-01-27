@@ -7,17 +7,11 @@
 
 #include "BulletLayer.h"
 
+#include "PlaneLayer.h"
+#include "BulletUserData.h"
+#include "GameScene.h"
+
 USING_NS_CC;
-
-static BulletLayer* _sharedBulletLayer = nullptr;
-
-BulletLayer* BulletLayer::getInstance() {
-	if (!_sharedBulletLayer) {
-		_sharedBulletLayer = new (std::nothrow) BulletLayer();
-		_sharedBulletLayer->init();
-	}
-	return _sharedBulletLayer;
-}
 
 bool BulletLayer::init() {
 	bulletTextureName.push_back("bullet1.png");
@@ -40,8 +34,10 @@ bool BulletLayer::init() {
 
 void BulletLayer::addBullet(float useless) {
 	Sprite* bullet = Sprite::createWithSpriteFrameName(bulletTextureName[nowBulletLevel]);
-	Point planePosition = PlaneLayer::getInstance()->getChildByName("PLANE")->getPosition();
-	Point bulletPosition = Point(planePosition.x, planePosition.y + PlaneLayer::getInstance()->getChildByName("PLANE")->getContentSize().height);
+	Point planePosition = static_cast<GameScene*>(this->getParent())->getPlaneLayer()->getChildByName("PLANE")->getPosition();
+
+	Point bulletPosition = Point(planePosition.x, planePosition.y + static_cast<GameScene*>(this->getParent())->getPlaneLayer()->getChildByName("PLANE")->getContentSize().height);
+
 	bullet->setPosition(bulletPosition);
 	bullet->setUserData(new BulletUserData(eachBulletDamage, nowBulletLevel));
 	allBullet.pushBack(bullet);

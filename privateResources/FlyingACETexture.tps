@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.6.0</string>
         <key>fileName</key>
-        <string>/home/netbeen/FlyingACE/Resources/privateResources/FlyingACETexture.tps</string>
+        <string>/home/netbeen/FlyingACE/privateResources/FlyingACETexture.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -38,7 +38,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../texture.png</filename>
+        <filename>../Resources/texture.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -145,7 +145,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../texture.plist</filename>
+                <filename>../Resources/texture.plist</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -215,6 +215,8 @@
             <filename>launchButtonUnable.png</filename>
             <filename>bigBombGet.png</filename>
             <filename>bigBomb.png</filename>
+            <filename>startGameButton.png</filename>
+            <filename>restartGameButton.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

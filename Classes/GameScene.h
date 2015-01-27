@@ -16,10 +16,24 @@
 #include "ControlLayer.h"
 #include "UFOLayer.h"
 
-class GameScene : public cocos2d::Scene{
+class GameScene: public cocos2d::Scene {
 public:
-	static cocos2d::Scene* getInstance();
+	static cocos2d::Scene* create();
+	GameBackgroundLayer* getGameBackgroundLayer();
+	UFOLayer* getUFOLayer();
+	BulletLayer* getBulletLayer();
+	EnemyLayer* getEnemyLayer();
+	ControlLayer* getControlLayer();
+	PlaneLayer* getPlaneLayer();
 private:
+	static cocos2d::Scene* gameScene;
+	static GameBackgroundLayer* gameBackgroundLayer;
+	static UFOLayer* ufoLayer;
+	static BulletLayer* bulletLayer;
+	static EnemyLayer* enemyLayer;
+	static PlaneLayer* planeLayer;
+	static ControlLayer* controlLayer;
+
 };
 
 #endif /* GAMESCENE_H_ */

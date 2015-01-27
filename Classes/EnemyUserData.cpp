@@ -14,7 +14,7 @@ void EnemyUserData::setIsDeleting(){
 	this->isDeleting = true;
 }
 
-bool EnemyUserData::getIsDeleting(){
+bool EnemyUserData::getIsDeleting() const{
 	return this->isDeleting;
 }
 

@@ -13,9 +13,9 @@
 
 class PlaneLayer : public cocos2d::Layer{
 public:
-	static PlaneLayer* getInstance();
+	CREATE_FUNC(PlaneLayer);
 	cocos2d::Sprite* getMyPlane();
-	int getInitHP();
+	int getInitHP() const;
 
 private:
 	const int initHP;

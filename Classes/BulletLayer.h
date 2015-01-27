@@ -9,18 +9,19 @@
 #define BULLETLAYER_H_
 
 #include "cocos2d.h"
-#include "PlaneLayer.h"
-#include "BulletUserData.h"
+
 
 class BulletLayer : public cocos2d::Layer{
 public:
 	cocos2d::Vector<cocos2d::Sprite*> allBullet;
 
-	static BulletLayer* getInstance();
+	CREATE_FUNC(BulletLayer);
 	void bulletMoveFinished(Node* pSender);
 	void stopShooting();
 	void setBulletLevelUP();
 	void launchBigBomb();
+
+	void addBullet(float useless);   //release后删除
 
 private:
 	int eachBulletDamage;
@@ -32,8 +33,7 @@ private:
 	~BulletLayer();
 	virtual bool init() override;
 	void startShooting();
-
-	void addBullet(float useless);
+	//void addBullet(float useless);   //release后生效
 };
 
 #endif /* BULLETLAYER_H_ */

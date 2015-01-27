@@ -11,19 +11,12 @@
 #include <string>
 #include <vector>
 #include "cocos2d.h"
-#include "PlaneLayer.h"
-#include "EnemyUserData.h"
-#include "BulletLayer.h"
-#include "BulletUserData.h"
-#include "PlaneLayer.h"
-#include "PlaneUserData.h"
-#include "ControlLayer.h"
-#include "ResultScene.h"
+
 
 
 class EnemyLayer : public cocos2d::Layer{
 public:
-	static EnemyLayer* getInstance();
+	CREATE_FUNC(EnemyLayer);
 private:
 	const float  baseEnemyAppearProbability;
 	const float deltaEnemyAppearProbability;
@@ -33,6 +26,7 @@ private:
 	std::vector<int> enemyInitHP;
 	cocos2d::Vector<cocos2d::Sprite*> allEnemy;
 	const cocos2d::Size winSize;
+	bool bossAppeared;
 
 	EnemyLayer();
 	~EnemyLayer();

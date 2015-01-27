@@ -7,20 +7,12 @@
 
 #include "ControlLayer.h"
 
-USING_NS_CC;
+#include "GameScene.h"
 
-static ControlLayer* _sharedControlLayer = nullptr;
+USING_NS_CC;
 
 ControlLayer::ControlLayer() :
 		score(0), scoreLabel(nullptr), pauseButtonItem(nullptr),HPIndicator(nullptr),launchButton(nullptr),launchButtonItem(nullptr),pauseButton(nullptr) {
-}
-
-ControlLayer* ControlLayer::getInstance() {
-	if (!_sharedControlLayer) {
-		_sharedControlLayer = new (std::nothrow) ControlLayer();
-		_sharedControlLayer->init();
-	}
-	return _sharedControlLayer;
 }
 
 void ControlLayer::addScoreBy(int addScore) {
@@ -58,15 +50,17 @@ bool ControlLayer::init() {
 	launchButtonItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("launchButton.png"), Sprite::createWithSpriteFrameName("launchButton.png"), Sprite::createWithSpriteFrameName("launchButtonUnable.png"), CC_CALLBACK_1(ControlLayer::menuLaunchCallback, this));
 	launchButton = Menu::create(launchButtonItem, nullptr);
 	launchButton->setPosition(100, 100);
+
 	launchButtonItem->setEnabled(false);
 	launchButton->setEnabled(false);
+
 	this->addChild(launchButton);
 	return true;
 }
 
 void ControlLayer::updateHPIndicator(){
-	int HP = static_cast<PlaneUserData*>(PlaneLayer::getInstance()->getMyPlane()->getUserData())->getHP();
-	int initHP = PlaneLayer::getInstance()->getInitHP();
+	int HP = static_cast<PlaneUserData*>(static_cast<GameScene*>(this->getParent())->getPlaneLayer()->getMyPlane()->getUserData())->getHP();
+	int initHP = static_cast<GameScene*>(this->getParent())->getPlaneLayer()->getInitHP();
 	float HPOld = HPIndicator->getPercentage();
 	float HPPercentage = static_cast<float>(HP) / static_cast<float>(initHP);
 	ProgressFromTo* animation = ProgressFromTo::create(0.2, HPOld, HPPercentage * 100);
@@ -80,7 +74,7 @@ void ControlLayer::updateScore() {
 	ss >> strScore;
 	scoreLabel->setString(strScore.c_str());
 	if(this->score % 1000 == 0){
-		UFOLayer::getInstance()->addGiftSprite();
+		static_cast<GameScene*>(this->getParent())->getUFOLayer()->addGiftSprite();
 	}
 }
 
@@ -101,7 +95,7 @@ void ControlLayer::menuPauseCallback(Ref* pSender) {
 void ControlLayer::menuLaunchCallback(Ref* pSender){
 	launchButtonItem->setEnabled(false);
 	launchButton->setEnabled(false);
-	BulletLayer::getInstance()->launchBigBomb();
+	static_cast<GameScene*>(this->getParent())->getBulletLayer()->launchBigBomb();
 }
 
 void ControlLayer::setLaunchButtonEnable(){

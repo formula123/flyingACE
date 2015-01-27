@@ -12,7 +12,6 @@ PlaneUserData::PlaneUserData(int initHP):HP(initHP){
 }
 
 bool PlaneUserData::isAliveUnderAttack(int damage){
-	cocos2d::log("damage");
 	this->HP -= damage;
 	if(this->HP <= 0){
 		return false;
@@ -21,6 +20,6 @@ bool PlaneUserData::isAliveUnderAttack(int damage){
 	}
 }
 
-int PlaneUserData::getHP(){
+int PlaneUserData::getHP() const{
 	return this->HP;
 }

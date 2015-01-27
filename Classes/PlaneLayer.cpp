@@ -9,16 +9,6 @@
 
 USING_NS_CC;
 
-static PlaneLayer* _sharedPlaneLayer = nullptr;
-
-PlaneLayer* PlaneLayer::getInstance() {
-	if (!_sharedPlaneLayer) {
-		_sharedPlaneLayer = new (std::nothrow) PlaneLayer();
-		_sharedPlaneLayer->init();
-	}
-	return _sharedPlaneLayer;
-}
-
 bool PlaneLayer::init() {
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(PlaneLayer::onTouchBegan, this);
@@ -41,7 +31,7 @@ bool PlaneLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_even
 	return true;
 }
 
-int PlaneLayer::getInitHP(){
+int PlaneLayer::getInitHP() const{
 	return this->initHP;
 }
 

@@ -115,13 +115,41 @@ include_directories(
 
 set(GAME_SRC
   Classes/AppDelegate.cpp
-  Classes/HelloWorldScene.cpp
+  Classes/BulletLayer.cpp
+  Classes/BulletUserData.cpp
+  Classes/ControlLayer.cpp
+  Classes/EnemyLayer.cpp
+  Classes/EnemyUserData.cpp
+  Classes/GameBackgroundLayer.cpp
+  Classes/GameScene.cpp
+  Classes/PlaneLayer.cpp
+  Classes/PlaneUserData.cpp
+  Classes/ResultButtonLayer.cpp
+  Classes/ResultScene.cpp
+  Classes/UFOLayer.cpp
+  Classes/UFOUserData.cpp
+  Classes/WelcomeButtonLayer.cpp
+  Classes/WelcomeScene.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
 set(GAME_HEADERS
   Classes/AppDelegate.h
-  Classes/HelloWorldScene.h
+  Classes/BulletLayer.h
+  Classes/BulletUserData.h
+  Classes/ControlLayer.h
+  Classes/EnemyLayer.h
+  Classes/EnemyUserData.h
+  Classes/GameBackgroundLayer.h
+  Classes/GameScene.h
+  Classes/PlaneLayer.h
+  Classes/PlaneUserData.h
+  Classes/ResultButtonLayer.h
+  Classes/ResultScene.h
+  Classes/UFOLayer.h
+  Classes/UFOUserData.h
+  Classes/WelcomeButtonLayer.h
+  Classes/WelcomeScene.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

@@ -9,12 +9,15 @@
 
 USING_NS_CC;
 
-static Scene* _sharedResultScene = nullptr;
+Scene* ResultScene::resultScene = nullptr;
 
-Scene* ResultScene::getInstance() {
-	if (!_sharedResultScene) {
-		_sharedResultScene = Scene::create();
-	}
-	return _sharedResultScene;
+Scene* ResultScene::create() {
+	resultScene = Scene::create();
+
+	ResultButtonLayer* resultButtonLayer = ResultButtonLayer::create();
+	resultButtonLayer->setParent(resultScene);
+	resultScene->addChild(resultButtonLayer);
+
+	return resultScene;
 
 }

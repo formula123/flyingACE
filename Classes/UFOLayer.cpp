@@ -7,17 +7,12 @@
 
 #include "UFOLayer.h"
 
+#include "ControlLayer.h"
+#include "UFOUserData.h"
+#include "BulletLayer.h"
+#include "GameScene.h"
+
 USING_NS_CC;
-
-static UFOLayer* _sharedUFOLayer = nullptr;
-
-UFOLayer* UFOLayer::getInstance() {
-	if (!_sharedUFOLayer) {
-		_sharedUFOLayer = new (std::nothrow) UFOLayer();
-		_sharedUFOLayer->init();
-	}
-	return _sharedUFOLayer;
-}
 
 UFOLayer::UFOLayer() :
 		winSize(Director::getInstance()->getWinSize()) {
@@ -67,11 +62,11 @@ void UFOLayer::giftMoveFinished(Node* pSender) {
 void UFOLayer::update(float useless) {
 	for (Sprite* gift : this->allGift) {
 		//判断我方飞机是否与gift碰撞
-		if (gift->getBoundingBox().intersectsRect(PlaneLayer::getInstance()->getMyPlane()->getBoundingBox())) {
+		if (gift->getBoundingBox().intersectsRect(static_cast<GameScene*>(this->getParent())->getPlaneLayer()->getMyPlane()->getBoundingBox())) {
 			if(static_cast<UFOUserData*>(gift->getUserData())->getGiftKind() == 0){
-				ControlLayer::getInstance()->setLaunchButtonEnable();
+				static_cast<GameScene*>(this->getParent())->getControlLayer()->setLaunchButtonEnable();
 			}else{
-				BulletLayer::getInstance()->setBulletLevelUP();
+				static_cast<GameScene*>(this->getParent())->getBulletLayer()->setBulletLevelUP();
 			}
 			this->giftMoveFinished(gift);
 		}

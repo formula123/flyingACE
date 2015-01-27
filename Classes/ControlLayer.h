@@ -15,9 +15,10 @@
 #include "PlaneUserData.h"
 #include "UFOLayer.h"
 
+
 class ControlLayer : public cocos2d::Layer{
 public:
-	static ControlLayer* getInstance();
+	CREATE_FUNC(ControlLayer);
 	void addScoreBy(int addScore);
 	void updateHPIndicator();
 	void setLaunchButtonEnable();

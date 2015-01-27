@@ -37,6 +37,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//读取纹理贴度集合
 	cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture.plist");
 
+	//读取爆炸动画帧并存入AnimationCache
 	Vector<SpriteFrame*> explosionAnimationVector;
 	for (int i = 0; i < 9; i++){
 		    char animitionFileName[32] = {0};
@@ -47,10 +48,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Animation* explosionAnimation = Animation::createWithSpriteFrames(explosionAnimationVector, 0.5f / 9.0f, 1);
 	AnimationCache::getInstance()->addAnimation(explosionAnimation,"explosion");
 
-	Scene* gameScene = GameScene::getInstance();
+	Scene* welcomeScene = WelcomeScene::create();
 
 	// run
-	director->runWithScene(gameScene);
+	director->runWithScene(welcomeScene);
 
 	return true;
 }
