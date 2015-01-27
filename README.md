@@ -12,7 +12,6 @@
 - Android NDK r10d
 - gcc 4.8
 - 在win32平台、linux平台、android平台、android虚拟机上测试通过
-- Tested under the win32, linux, android(both mobile and SDK).
 
 ---
 
@@ -23,10 +22,17 @@
 - EnemyLayer: 敌机层，加载敌机并维护敌机数据，检测敌机与子弹、敌机与我机及碰撞，并且调用对应接口
 - EnemyUserData: 敌机数据
 - GameBackgroundLayer: 布景层，实现地图加载，循环滚动
+- GameScene: 游戏主场景
 - PlaneLayer: 飞机层，渲染飞机动画，响应用户滑屏操作
 - PlaneUserData: 飞机数据
+- ResultBackgroundLayer: 游戏结果场景中显示背景图片的层
+- ResultButtonLayer: 游戏结果场景中显示并回调按钮事件的层
+- ResultScene: 游戏结果场景
 - UFOLayer: 不明飞行物层，目前用于投放武器加强的buff和大招buff
 - UFOUserData: 数据记录类，用于记录gift的类型
+- WelcomeBackgroundLayer: 欢迎界面中的背景层
+- WelcomeButtonLayer: 欢迎界面中的按钮回调函数
+- WelcomeScene: 欢迎界面
 
 ---
 
@@ -76,10 +82,17 @@
 - EnemyLayer: Enemy Layer, load the enemy from a plist, and placed them onto a random position. Also, prividing the interface of the crash detecting.
 - EnemyUserData: The datastruct defined by myself. Recording the some paramater of enemy plane, like HP and others. 
 - GameBackgroundLayer: Background Layer, auto loading the background image and rolling.
+- GameScene: The main scene of the game, contain the most object.
 - PlaneLayer: Plane Layer, Interactive layer of the game.
 - PlaneUserData: The datastruct defined by myself. Recording the some paramater of enemy plane, like HP and others. 
+- ResultBackgroundLayer: Show the background image in the result scene.
+- ResultButtonLayer: Show the button in the result scene.
+- ResultScene: Game result scene.
 - UFOLayer: This Layer is actived by some sprcific conditions, now, this layer is used for some gift with buffs, like enhance the bullet or get the big bomb.
 - UFOUserData: The data structure recording the kind of UFO gift.
+- WelcomeBackgroundLayer: Show the background image in the welcome scene.
+- WelcomeButtonLayer: Show the button in the welcome scene.
+- WelcomeScene: Welcome scene, the loading image.
 
 ---
 
