@@ -27,7 +27,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/WelcomeScene.cpp \
                    ../../Classes/WelcomeButtonLayer.cpp \
                    ../../Classes/ResultButtonLayer.cpp \
-                   ../../Classes/WelcomeBackgroundLayer.cpp
+                   ../../Classes/WelcomeBackgroundLayer.cpp \
+                   ../../Classes/ResultBackgroundLayer.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 

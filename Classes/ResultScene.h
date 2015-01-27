@@ -10,6 +10,7 @@
 
 #include "cocos2d.h"
 #include "ResultButtonLayer.h"
+#include "ResultBackgroundLayer.h"
 
 class ResultScene :public cocos2d::Scene{
 public:

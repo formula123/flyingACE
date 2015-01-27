@@ -14,6 +14,10 @@ Scene* ResultScene::resultScene = nullptr;
 Scene* ResultScene::create() {
 	resultScene = Scene::create();
 
+	ResultBackgroundLayer* resultBackgroundLayer = ResultBackgroundLayer::create();
+	resultBackgroundLayer->setParent(resultScene);
+	resultScene->addChild(resultBackgroundLayer);
+
 	ResultButtonLayer* resultButtonLayer = ResultButtonLayer::create();
 	resultButtonLayer->setParent(resultScene);
 	resultScene->addChild(resultButtonLayer);
