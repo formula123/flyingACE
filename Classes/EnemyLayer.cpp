@@ -21,7 +21,7 @@ USING_NS_CC;
 
 
 EnemyLayer::EnemyLayer() :
-		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(0.4), deltaEnemyAppearProbability(0.007), nowEnemyAppearProbability(baseEnemyAppearProbability),bossAppeared(false) {
+		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(UserDefault::getInstance()->getFloatForKey("probabilityOfBaseEnemyAppear")), deltaEnemyAppearProbability(UserDefault::getInstance()->getFloatForKey("probabilityOfDeltaEnemyAppear")), nowEnemyAppearProbability(baseEnemyAppearProbability),bossAppeared(false) {
 }
 
 EnemyLayer::~EnemyLayer() {
@@ -38,9 +38,9 @@ bool EnemyLayer::init() {
 	enemyFlyTime.push_back(10);
 	enemyFlyTime.push_back(10);
 	enemyFlyTime.push_back(5);
-	enemyInitHP.push_back(200);
-	enemyInitHP.push_back(400);
-	enemyInitHP.push_back(400);
+	enemyInitHP.push_back(UserDefault::getInstance()->getIntegerForKey("HPOfEnemy1"));
+	enemyInitHP.push_back(UserDefault::getInstance()->getIntegerForKey("HPOfEnemy2"));
+	enemyInitHP.push_back(UserDefault::getInstance()->getIntegerForKey("HPOfEnemy3"));
 	startAddEnemy();
 	this->scheduleUpdate();
 
@@ -78,7 +78,7 @@ void EnemyLayer::enemyMoveFinished(Node* pSender) {
 }
 
 void EnemyLayer::startAddEnemy() {
-	this->schedule(schedule_selector(EnemyLayer::addEnemySprite), 0.5f);
+	this->schedule(schedule_selector(EnemyLayer::addEnemySprite),UserDefault::getInstance()->getFloatForKey("intervalOfAddEnemy"));
 }
 
 void EnemyLayer::stopAddEnemy() {

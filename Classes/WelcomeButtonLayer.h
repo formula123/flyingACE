@@ -16,7 +16,6 @@ public:
 	CREATE_FUNC(WelcomeButtonLayer);
 private:
 	void startGameButtonCallback(Ref* pSender);
-
 	virtual bool init() override;
 };
 

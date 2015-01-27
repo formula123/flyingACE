@@ -13,7 +13,7 @@ bool WelcomeButtonLayer::init() {
 	MenuItemSprite* startGameButtonItemSprite = MenuItemSprite::create(Sprite::createWithSpriteFrameName("startGameButton.png"), Sprite::createWithSpriteFrameName("startGameButton.png"), CC_CALLBACK_1(WelcomeButtonLayer::startGameButtonCallback, this));
 	Menu* startGameButton = Menu::create(startGameButtonItemSprite, nullptr);
 	startGameButton->setAnchorPoint(Point(0.0f, 1.0f));
-	startGameButton->setPosition(200, 200);
+	startGameButton->setPosition(Director::getInstance()->getWinSize().width/2, 200);
 	this->addChild(startGameButton);
 	return true;
 }

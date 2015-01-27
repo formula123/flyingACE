@@ -15,6 +15,8 @@ public:
 	AppDelegate();
 	virtual ~AppDelegate();
 
+	void initConfigXML();
+
 	virtual void initGLContextAttrs();
 
 	/**

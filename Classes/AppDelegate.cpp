@@ -20,6 +20,9 @@ void AppDelegate::initGLContextAttrs() {
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+
+	this->initConfigXML();
+
 	// initialize director
 	Director* director = Director::getInstance();
 	auto glview = director->getOpenGLView();
@@ -35,7 +38,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	director->setAnimationInterval(1.0 / 60);
 
 	//读取纹理贴度集合
-	cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture.plist");
+	cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile(UserDefault::getInstance()->getStringForKey("textureFileName"));
 
 	//读取爆炸动画帧并存入AnimationCache
 	Vector<SpriteFrame*> explosionAnimationVector;
@@ -70,4 +73,19 @@ void AppDelegate::applicationWillEnterForeground() {
 
 	// if you use SimpleAudioEngine, it must resume here
 	// SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+}
+
+
+void AppDelegate::initConfigXML(){
+	UserDefault::getInstance()->setStringForKey("textureFileName","texture.plist");
+	UserDefault::getInstance()->setFloatForKey("intervalOfAddBullet",0.2f);
+	UserDefault::getInstance()->setFloatForKey("intervalOfAddEnemy", 0.5f);
+	UserDefault::getInstance()->setIntegerForKey("damageOfInitBullet",100);
+	UserDefault::getInstance()->setIntegerForKey("damageOfDeltaWhenLevelUp", 50);
+	UserDefault::getInstance()->setIntegerForKey("damageOfBigBomb", 400);
+	UserDefault::getInstance()->setFloatForKey("probabilityOfBaseEnemyAppear", 0.4f);
+	UserDefault::getInstance()->setFloatForKey("probabilityOfDeltaEnemyAppear", 0.007f);
+	UserDefault::getInstance()->setIntegerForKey("HPOfEnemy1", 200);
+	UserDefault::getInstance()->setIntegerForKey("HPOfEnemy2", 400);
+	UserDefault::getInstance()->setIntegerForKey("HPOfEnemy3", 400);
 }

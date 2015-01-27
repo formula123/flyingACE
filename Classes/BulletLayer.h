@@ -21,8 +21,6 @@ public:
 	void setBulletLevelUP();
 	void launchBigBomb();
 
-	void addBullet(float useless);   //release后删除
-
 private:
 	int eachBulletDamage;
 	std::vector<std::string> bulletTextureName;
@@ -33,7 +31,7 @@ private:
 	~BulletLayer();
 	virtual bool init() override;
 	void startShooting();
-	//void addBullet(float useless);   //release后生效
+	void addBullet(float useless);
 };
 
 #endif /* BULLETLAYER_H_ */

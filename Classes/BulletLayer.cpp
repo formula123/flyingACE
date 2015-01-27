@@ -64,7 +64,7 @@ void BulletLayer::bulletMoveFinished(Node* pSender) {
 }
 
 void BulletLayer::startShooting() {
-	this->schedule(schedule_selector(BulletLayer::addBullet), 0.2f);
+	this->schedule(schedule_selector(BulletLayer::addBullet), UserDefault::getInstance()->getFloatForKey("intervalOfAddBullet"));
 }
 
 void BulletLayer::stopShooting() {
@@ -72,7 +72,7 @@ void BulletLayer::stopShooting() {
 }
 
 BulletLayer::BulletLayer() :
-		eachBulletDamage(100), nowBulletLevel(0) {
+		eachBulletDamage(UserDefault::getInstance()->getIntegerForKey("damageOfInitBullet")), nowBulletLevel(0) {
 }
 
 BulletLayer::~BulletLayer() {
@@ -81,6 +81,7 @@ BulletLayer::~BulletLayer() {
 void BulletLayer::setBulletLevelUP() {
 	if (nowBulletLevel < 2) {
 		this->nowBulletLevel += 1;
+		this->eachBulletDamage += UserDefault::getInstance()->getIntegerForKey("damageOfDeltaWhenLevelUp");
 	}
 }
 
@@ -88,7 +89,7 @@ void BulletLayer::launchBigBomb() {
 	for(int i = 0; i < Director::getInstance()->getWinSize().width + Sprite::createWithSpriteFrameName("bigBomb.png")->getContentSize().width ; i += Sprite::createWithSpriteFrameName("bigBomb.png")->getContentSize().width){
 		Sprite* bigBomb = Sprite::createWithSpriteFrameName("bigBomb.png");
 		bigBomb->setPosition(i, - bigBomb->getContentSize().height /2);
-		bigBomb->setUserData(new BulletUserData(400, 3));
+		bigBomb->setUserData(new BulletUserData(UserDefault::getInstance()->getIntegerForKey("damageOfBigBomb"), 3));
 		allBullet.pushBack(bigBomb);
 		this->bulletBatchNodeVector[3]->addChild(bigBomb);
 
