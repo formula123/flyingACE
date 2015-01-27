@@ -10,12 +10,14 @@
 
 #include "cocos2d.h"
 #include "GameScene.h"
+#include "WelcomeScene.h"
 
 class ResultButtonLayer : public cocos2d::Layer{
 public:
 	CREATE_FUNC(ResultButtonLayer);
 private:
 	void restartGameButtonCallback(Ref* pSender);
+	void startGameButtonCallback(Ref* pSender);
 	virtual bool init() override;
 };
 

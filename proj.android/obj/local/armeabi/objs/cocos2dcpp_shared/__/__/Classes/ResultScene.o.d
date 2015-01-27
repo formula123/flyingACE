@@ -353,7 +353,10 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/ResultScene.o: \
  jni/../../Classes/EnemyLayer.h jni/../../Classes/ControlLayer.h \
  /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/strstream \
  /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h \
- jni/../../Classes/UFOLayer.h jni/../../Classes/ResultBackgroundLayer.h
+ jni/../../Classes/UFOLayer.h jni/../../Classes/WelcomeScene.h \
+ jni/../../Classes/WelcomeButtonLayer.h \
+ jni/../../Classes/WelcomeBackgroundLayer.h \
+ jni/../../Classes/ResultBackgroundLayer.h
 
 jni/../../Classes/ResultScene.h:
 
@@ -1072,5 +1075,11 @@ jni/../../Classes/ControlLayer.h:
 /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h:
 
 jni/../../Classes/UFOLayer.h:
+
+jni/../../Classes/WelcomeScene.h:
+
+jni/../../Classes/WelcomeButtonLayer.h:
+
+jni/../../Classes/WelcomeBackgroundLayer.h:
 
 jni/../../Classes/ResultBackgroundLayer.h:
