@@ -10,9 +10,14 @@
 USING_NS_CC;
 
 bool WelcomeBackgroundLayer::init(){
-	auto background = Sprite::createWithSpriteFrameName("img_bg_welcome.jpg");
+	Sprite* background = Sprite::createWithSpriteFrameName("img_bg_welcome.jpg");
 	background->setAnchorPoint(Point(0,0));
 	this->addChild(background);
+
+	Sprite* logo = Sprite::createWithSpriteFrameName("logo.png");
+	logo->setAnchorPoint(Point(0.5,0.5));
+	logo->setPosition(Director::getInstance()->getWinSize().width/2, 650);
+	this->addChild(logo);
 
 	return true;
 }

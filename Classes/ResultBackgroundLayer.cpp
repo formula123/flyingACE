@@ -10,7 +10,7 @@
 USING_NS_CC;
 
 bool ResultBackgroundLayer::init(){
-	auto background = Sprite::createWithSpriteFrameName("img_bg_result.jpg");
+	auto background = Sprite::createWithSpriteFrameName("img_bg_welcome.jpg");
 	background->setAnchorPoint(Point(0,0));
 	this->addChild(background);
 

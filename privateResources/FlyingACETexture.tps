@@ -218,6 +218,7 @@
             <filename>startGameButton.png</filename>
             <filename>restartGameButton.png</filename>
             <filename>img_bg_welcome.jpg</filename>
+            <filename>logo.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
