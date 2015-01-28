@@ -88,4 +88,11 @@ void AppDelegate::initConfigXML(){
 	UserDefault::getInstance()->setIntegerForKey("HPOfEnemy1", 200);
 	UserDefault::getInstance()->setIntegerForKey("HPOfEnemy2", 400);
 	UserDefault::getInstance()->setIntegerForKey("HPOfEnemy3", 400);
+	UserDefault::getInstance()->setIntegerForKey("HPOfEnemyBoss",10000);
+	UserDefault::getInstance()->setIntegerForKey("FlytimeOfEnemy1",10);
+	UserDefault::getInstance()->setIntegerForKey("FlytimeOfEnemy2",10);
+	UserDefault::getInstance()->setIntegerForKey("FlytimeOfEnemy3",5);
+	UserDefault::getInstance()->setIntegerForKey("FlytimeOfEnemyBoss",20);
+	UserDefault::getInstance()->setIntegerForKey("FlytimeOfGiftLevelUp",12);
+	UserDefault::getInstance()->setIntegerForKey("FlytimeOfGiftBigBomb",12);
 }

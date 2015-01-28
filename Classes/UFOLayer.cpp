@@ -24,8 +24,8 @@ bool UFOLayer::init() {
 	giftTextureName.push_back(name1);
 	giftTextureName.push_back(name2);
 
-	giftFlyTime.push_back(7);
-	giftFlyTime.push_back(7);
+	giftFlyTime.push_back(UserDefault::getInstance()->getIntegerForKey("FlytimeOfGiftBigBomb"));
+	giftFlyTime.push_back(UserDefault::getInstance()->getIntegerForKey("FlytimeOfGiftLevelUp"));
 
 	this->scheduleUpdate();
 	return true;

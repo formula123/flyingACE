@@ -35,14 +35,20 @@ bool EnemyLayer::init() {
 	enemyTextureName.push_back(name2);
 	enemyTextureName.push_back(name3);
 
-	enemyFlyTime.push_back(10);
-	enemyFlyTime.push_back(10);
-	enemyFlyTime.push_back(5);
+	enemyFlyTime.push_back(UserDefault::getInstance()->getIntegerForKey("FlytimeOfEnemy1"));
+	enemyFlyTime.push_back(UserDefault::getInstance()->getIntegerForKey("FlytimeOfEnemy2"));
+	enemyFlyTime.push_back(UserDefault::getInstance()->getIntegerForKey("FlytimeOfEnemy3"));
 	enemyInitHP.push_back(UserDefault::getInstance()->getIntegerForKey("HPOfEnemy1"));
 	enemyInitHP.push_back(UserDefault::getInstance()->getIntegerForKey("HPOfEnemy2"));
 	enemyInitHP.push_back(UserDefault::getInstance()->getIntegerForKey("HPOfEnemy3"));
 	startAddEnemy();
 	this->scheduleUpdate();
+
+	bossWarning = Sprite::createWithSpriteFrameName("bossWarning.png");
+	bossWarning->setPosition(Director::getInstance()->getWinSize().width/2, Director::getInstance()->getWinSize().height/2);
+	bossWarning->setScale(3.0f);
+	bossWarning->setOpacity(0);
+	this->addChild(bossWarning,128);
 
 	return true;
 }
@@ -66,7 +72,8 @@ void EnemyLayer::addEnemySprite(float useless) {
 	nowEnemyAppearProbability += deltaEnemyAppearProbability;
 	if(nowEnemyAppearProbability > 1) {
 		this->stopAddEnemy();
-		addBossSprite();
+		this->setBossWarningOn();
+		this->addBossSprite();
 	}
 }
 
@@ -155,11 +162,11 @@ void EnemyLayer::update(float useless) {
 void EnemyLayer::addBossSprite() {
 	Sprite* bossSprite = Sprite::createWithSpriteFrameName("enemyBoss.png");
 	bossSprite->setPosition(winSize.width / 2, winSize.height + bossSprite->getContentSize().height);
-	bossSprite->setUserData(new EnemyUserData(6000));
+	bossSprite->setUserData(new EnemyUserData(UserDefault::getInstance()->getIntegerForKey("HPOfEnemyBoss")));
 	this->addChild(bossSprite);
 	allEnemy.pushBack(bossSprite);
 
-	FiniteTimeAction* enemyMove = MoveTo::create(15, Point(winSize.width / 2, -bossSprite->getContentSize().height / 2));
+	FiniteTimeAction* enemyMove = MoveTo::create(UserDefault::getInstance()->getIntegerForKey("FlytimeOfEnemyBoss"), Point(winSize.width / 2, -bossSprite->getContentSize().height / 2));
 	FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
 	Action* enemyAction = Sequence::create(enemyMove, enemyRemove, NULL);
 	bossSprite->runAction(enemyAction);
@@ -170,4 +177,9 @@ void EnemyLayer::addBossSprite() {
 void EnemyLayer::changeSceneCallBack(float useless){
 	Scene* resultSceneWithAnimation = TransitionFade::create(2.0f,ResultScene::create());
 	Director::getInstance()->replaceScene(resultSceneWithAnimation);
+}
+
+void EnemyLayer::setBossWarningOn(){
+	Sequence* sequenceFront = Sequence::create(FadeIn::create(0.5f), FadeOut::create(1.5f),FadeIn::create(0.5f), FadeOut::create(2.0f), NULL);
+	this->bossWarning->runAction(sequenceFront);
 }

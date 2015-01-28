@@ -27,6 +27,7 @@ private:
 	cocos2d::Vector<cocos2d::Sprite*> allEnemy;
 	const cocos2d::Size winSize;
 	bool bossAppeared;
+	cocos2d::Sprite* bossWarning;
 
 	EnemyLayer();
 	~EnemyLayer();
@@ -38,6 +39,7 @@ private:
 	void update(float useless) override;
 	void addBossSprite();
 	void changeSceneCallBack(float useless);
+	void setBossWarningOn();
 
 };
 
