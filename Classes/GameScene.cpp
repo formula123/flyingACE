@@ -36,10 +36,10 @@ Scene* GameScene::create() {
 	controlLayer->setParent(gameScene);
 
 	gameScene->addChild(gameBackgroundLayer);
-	gameScene->addChild(ufoLayer);
 	gameScene->addChild(bulletLayer);
 	gameScene->addChild(enemyLayer);
 	gameScene->addChild(planeLayer);
+	gameScene->addChild(ufoLayer);
 	gameScene->addChild(controlLayer);
 
 	return gameScene;

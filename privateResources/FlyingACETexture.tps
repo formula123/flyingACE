@@ -219,6 +219,10 @@
             <filename>restartGameButton.png</filename>
             <filename>img_bg_welcome.jpg</filename>
             <filename>logo.png</filename>
+            <filename>bulletLevelUp2.png</filename>
+            <filename>bulletLevelUp1.png</filename>
+            <filename>getBigBomb1.png</filename>
+            <filename>getBigBomb2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

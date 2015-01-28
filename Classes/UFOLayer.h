@@ -22,11 +22,14 @@ private:
 	std::vector<int> giftFlyTime;
 	cocos2d::Vector<cocos2d::Sprite*> allGift;
 	cocos2d::Size winSize;
+	cocos2d::Sequence* sequenceFront;
+	cocos2d::Sequence* sequenceBack;
 
 	virtual bool init() override;
 	void giftMoveFinished(cocos2d::Node* pSender);
 	UFOLayer();
 	void update(float useless) override;
+	void showAnnotation(cocos2d::Sprite* gift);
 };
 
 #endif /* UFOLAYER_H_ */

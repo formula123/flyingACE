@@ -15,7 +15,7 @@
 USING_NS_CC;
 
 UFOLayer::UFOLayer() :
-		winSize(Director::getInstance()->getWinSize()) {
+		winSize(Director::getInstance()->getWinSize()), sequenceBack(nullptr), sequenceFront(nullptr) {
 }
 
 bool UFOLayer::init() {
@@ -63,13 +63,39 @@ void UFOLayer::update(float useless) {
 	for (Sprite* gift : this->allGift) {
 		//判断我方飞机是否与gift碰撞
 		if (gift->getBoundingBox().intersectsRect(static_cast<GameScene*>(this->getParent())->getPlaneLayer()->getMyPlane()->getBoundingBox())) {
-			if(static_cast<UFOUserData*>(gift->getUserData())->getGiftKind() == 0){
+
+			if (static_cast<UFOUserData*>(gift->getUserData())->getGiftKind() == 0) {
 				static_cast<GameScene*>(this->getParent())->getControlLayer()->setLaunchButtonEnable();
-			}else{
+			} else {
 				static_cast<GameScene*>(this->getParent())->getBulletLayer()->setBulletLevelUP();
 			}
+			this->showAnnotation(gift);
 			this->giftMoveFinished(gift);
 		}
 		//end判断我方飞机是否与gift碰撞
 	}
+}
+
+void UFOLayer::showAnnotation(Sprite* gift) {
+	Sprite* bulletLevelUp1;
+	Sprite* bulletLevelUp2;
+	if(static_cast<UFOUserData*>(gift->getUserData())->getGiftKind() == 0){
+		bulletLevelUp1 = Sprite::createWithSpriteFrameName("getBigBomb1.png");
+		bulletLevelUp2 = Sprite::createWithSpriteFrameName("getBigBomb2.png");
+	}else{
+		bulletLevelUp1 = Sprite::createWithSpriteFrameName("bulletLevelUp1.png");
+		bulletLevelUp2 = Sprite::createWithSpriteFrameName("bulletLevelUp2.png");
+	}
+	sequenceFront = Sequence::create(FadeIn::create(0.5f), FadeOut::create(2.0f), NULL);
+	sequenceBack = Sequence::create(FadeIn::create(1.0f), FadeOut::create(3.0f), NULL);
+	bulletLevelUp1->setPosition(gift->getPosition());
+	bulletLevelUp1->setScale(2.0f);
+	bulletLevelUp1->setOpacity(0);
+	bulletLevelUp2->setPosition(gift->getPosition());
+	bulletLevelUp2->setScale(2.0f);
+	bulletLevelUp2->setOpacity(0);
+	this->addChild(bulletLevelUp1);
+	this->addChild(bulletLevelUp2);
+	bulletLevelUp1->runAction(sequenceFront);
+	bulletLevelUp2->runAction(sequenceBack);
 }
