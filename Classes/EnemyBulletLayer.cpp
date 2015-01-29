@@ -72,10 +72,7 @@ void EnemyBulletLayer::update(float useless) {
 				static_cast<GameScene*>(this->getParent())->getControlLayer()->updateHPIndicator();
 			}
 			bossBulletMoveFinished(bullet);
-
-
 		}
-
 	}
 }
 

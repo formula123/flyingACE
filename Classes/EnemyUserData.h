@@ -14,6 +14,7 @@ public:
 	void setIsDeleting();
 	bool getIsDeleting() const;
 	bool isAliveUnderAttack(int damage);
+	int getHP();
 private:
 	int HP;
 	bool isDeleting;

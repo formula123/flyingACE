@@ -26,3 +26,7 @@ bool EnemyUserData::isAliveUnderAttack(int damage){
 		return true;
 	}
 }
+
+int EnemyUserData::getHP(){
+	return this->HP;
+}

@@ -122,6 +122,15 @@ void EnemyLayer::update(float useless) {
 					}
 					//end读取子弹的伤害，给敌机造成伤害
 
+					//根据损血改变BOSS外观
+					if(this->bossAppeared == true){
+						if(static_cast<EnemyUserData*>(bossSprite->getUserData())->getHP() < (UserDefault::getInstance()->getIntegerForKey("HPOfEnemyBoss") /3*2) && (static_cast<EnemyUserData*>(bossSprite->getUserData())->getHP() > (UserDefault::getInstance()->getIntegerForKey("HPOfEnemyBoss") /3))){
+							bossSprite->setSpriteFrame("enemyBossBroken.png");
+						}else if(static_cast<EnemyUserData*>(bossSprite->getUserData())->getHP() < (UserDefault::getInstance()->getIntegerForKey("HPOfEnemyBoss") /3)){
+							bossSprite->setSpriteFrame("enemyBossBrokenMore.png");
+						}
+					}//end根据损血改变BOSS外观
+
 					//回收子弹
 					static_cast<GameScene*>(this->getParent())->getBulletLayer()->bulletMoveFinished(bullet);
 				}
