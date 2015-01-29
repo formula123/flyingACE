@@ -15,6 +15,7 @@
 #include "EnemyLayer.h"
 #include "ControlLayer.h"
 #include "UFOLayer.h"
+#include "EnemyBulletLayer.h"
 
 class GameScene: public cocos2d::Scene {
 public:
@@ -25,6 +26,7 @@ public:
 	EnemyLayer* getEnemyLayer();
 	ControlLayer* getControlLayer();
 	PlaneLayer* getPlaneLayer();
+	EnemyBulletLayer* getEnemyBulletLayer();
 private:
 	static cocos2d::Scene* gameScene;
 	static GameBackgroundLayer* gameBackgroundLayer;
@@ -33,6 +35,7 @@ private:
 	static EnemyLayer* enemyLayer;
 	static PlaneLayer* planeLayer;
 	static ControlLayer* controlLayer;
+	static EnemyBulletLayer* enemyBulletLayer;
 
 };
 

@@ -223,6 +223,7 @@
             <filename>bulletLevelUp1.png</filename>
             <filename>getBigBomb1.png</filename>
             <filename>getBigBomb2.png</filename>
+            <filename>bossWarning.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

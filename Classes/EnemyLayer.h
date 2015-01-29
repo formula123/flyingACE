@@ -17,6 +17,7 @@
 class EnemyLayer : public cocos2d::Layer{
 public:
 	CREATE_FUNC(EnemyLayer);
+	cocos2d::Sprite* getBossSprite();
 private:
 	const float  baseEnemyAppearProbability;
 	const float deltaEnemyAppearProbability;
@@ -28,6 +29,8 @@ private:
 	const cocos2d::Size winSize;
 	bool bossAppeared;
 	cocos2d::Sprite* bossWarning;
+	cocos2d::Sprite* bossSprite;
+
 
 	EnemyLayer();
 	~EnemyLayer();
@@ -40,6 +43,7 @@ private:
 	void addBossSprite();
 	void changeSceneCallBack(float useless);
 	void setBossWarningOn();
+	void bossStartMove();
 
 };
 

@@ -18,6 +18,7 @@ BulletLayer* GameScene::bulletLayer = nullptr;
 EnemyLayer* GameScene::enemyLayer = nullptr;
 PlaneLayer* GameScene::planeLayer = nullptr;
 ControlLayer* GameScene::controlLayer = nullptr;
+EnemyBulletLayer* GameScene::enemyBulletLayer = nullptr;
 
 Scene* GameScene::create() {
 	gameScene = Scene::create();
@@ -34,9 +35,13 @@ Scene* GameScene::create() {
 	enemyLayer->setParent(gameScene);
 	controlLayer = ControlLayer::create();
 	controlLayer->setParent(gameScene);
+	enemyBulletLayer = EnemyBulletLayer::create();
+	enemyBulletLayer->setParent(gameScene);
+
 
 	gameScene->addChild(gameBackgroundLayer);
 	gameScene->addChild(bulletLayer);
+	gameScene->addChild(enemyBulletLayer);
 	gameScene->addChild(enemyLayer);
 	gameScene->addChild(planeLayer);
 	gameScene->addChild(ufoLayer);
@@ -64,4 +69,8 @@ EnemyLayer* GameScene::getEnemyLayer(){
 }
 ControlLayer* GameScene::getControlLayer(){
 	return this->controlLayer;
+}
+
+EnemyBulletLayer* GameScene::getEnemyBulletLayer(){
+	return this->enemyBulletLayer;
 }

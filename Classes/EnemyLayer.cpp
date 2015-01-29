@@ -19,9 +19,8 @@
 
 USING_NS_CC;
 
-
 EnemyLayer::EnemyLayer() :
-		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(UserDefault::getInstance()->getFloatForKey("probabilityOfBaseEnemyAppear")), deltaEnemyAppearProbability(UserDefault::getInstance()->getFloatForKey("probabilityOfDeltaEnemyAppear")), nowEnemyAppearProbability(baseEnemyAppearProbability),bossAppeared(false) {
+		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(UserDefault::getInstance()->getFloatForKey("probabilityOfBaseEnemyAppear")), deltaEnemyAppearProbability(UserDefault::getInstance()->getFloatForKey("probabilityOfDeltaEnemyAppear")), nowEnemyAppearProbability(baseEnemyAppearProbability), bossAppeared(false) {
 }
 
 EnemyLayer::~EnemyLayer() {
@@ -45,10 +44,10 @@ bool EnemyLayer::init() {
 	this->scheduleUpdate();
 
 	bossWarning = Sprite::createWithSpriteFrameName("bossWarning.png");
-	bossWarning->setPosition(Director::getInstance()->getWinSize().width/2, Director::getInstance()->getWinSize().height/2);
+	bossWarning->setPosition(Director::getInstance()->getWinSize().width / 2, Director::getInstance()->getWinSize().height / 2);
 	bossWarning->setScale(3.0f);
 	bossWarning->setOpacity(0);
-	this->addChild(bossWarning,128);
+	this->addChild(bossWarning, 128);
 
 	return true;
 }
@@ -85,7 +84,7 @@ void EnemyLayer::enemyMoveFinished(Node* pSender) {
 }
 
 void EnemyLayer::startAddEnemy() {
-	this->schedule(schedule_selector(EnemyLayer::addEnemySprite),UserDefault::getInstance()->getFloatForKey("intervalOfAddEnemy"));
+	this->schedule(schedule_selector(EnemyLayer::addEnemySprite), UserDefault::getInstance()->getFloatForKey("intervalOfAddEnemy"));
 }
 
 void EnemyLayer::stopAddEnemy() {
@@ -99,8 +98,9 @@ void EnemyLayer::update(float useless) {
 	auto actionExplosion = Animate::create(animationExplosion);
 
 	//判断是否已经通关
-	if((allEnemy.empty() == true) && (this->bossAppeared == true)){
-		scheduleOnce(schedule_selector(EnemyLayer::changeSceneCallBack),1.0f);
+	if ((allEnemy.empty() == true) && (this->bossAppeared == true)) {
+		static_cast<GameScene*>(this->getParent())->getEnemyBulletLayer()->bossStopShooting();
+		scheduleOnce(schedule_selector(EnemyLayer::changeSceneCallBack), 1.0f);
 	}
 
 	//遍历敌机
@@ -144,7 +144,7 @@ void EnemyLayer::update(float useless) {
 					if (static_cast<PlaneUserData*>(static_cast<GameScene*>(this->getParent())->getPlaneLayer()->getMyPlane()->getUserData())->isAliveUnderAttack(200) == false) {
 						static_cast<GameScene*>(this->getParent())->getBulletLayer()->stopShooting();
 						static_cast<GameScene*>(this->getParent())->getPlaneLayer()->getMyPlane()->runAction(Sequence::create(actionExplosion, NULL));
-						scheduleOnce(schedule_selector(EnemyLayer::changeSceneCallBack),1.0f);
+						scheduleOnce(schedule_selector(EnemyLayer::changeSceneCallBack), 1.0f);
 					}
 					//end给我方飞机造成碰撞伤害
 
@@ -160,26 +160,48 @@ void EnemyLayer::update(float useless) {
 }
 
 void EnemyLayer::addBossSprite() {
-	Sprite* bossSprite = Sprite::createWithSpriteFrameName("enemyBoss.png");
+	bossSprite = Sprite::createWithSpriteFrameName("enemyBoss.png");
 	bossSprite->setPosition(winSize.width / 2, winSize.height + bossSprite->getContentSize().height);
 	bossSprite->setUserData(new EnemyUserData(UserDefault::getInstance()->getIntegerForKey("HPOfEnemyBoss")));
 	this->addChild(bossSprite);
 	allEnemy.pushBack(bossSprite);
 
-	FiniteTimeAction* enemyMove = MoveTo::create(UserDefault::getInstance()->getIntegerForKey("FlytimeOfEnemyBoss"), Point(winSize.width / 2, -bossSprite->getContentSize().height / 2));
-	FiniteTimeAction* enemyRemove = CallFuncN::create(CC_CALLBACK_1(EnemyLayer::enemyMoveFinished, this));
-	Action* enemyAction = Sequence::create(enemyMove, enemyRemove, NULL);
-	bossSprite->runAction(enemyAction);
+	FiniteTimeAction* bossAppear = MoveTo::create(UserDefault::getInstance()->getIntegerForKey("FlytimeOfEnemyBossAppear"), Point(winSize.width / 2, winSize.height - 200 - bossSprite->getContentSize().height / 2));
+	FiniteTimeAction* bossAppearDone = CallFuncN::create(CC_CALLBACK_0(EnemyLayer::bossStartMove, this));
+
+	Action* enemyAppearAction = Sequence::create(bossAppear, bossAppearDone, NULL);
+	bossSprite->runAction(enemyAppearAction);
 
 	this->bossAppeared = true;
 }
 
-void EnemyLayer::changeSceneCallBack(float useless){
-	Scene* resultSceneWithAnimation = TransitionFade::create(2.0f,ResultScene::create());
+void EnemyLayer::changeSceneCallBack(float useless) {
+	Scene* resultSceneWithAnimation = TransitionFade::create(2.0f, ResultScene::create());
 	Director::getInstance()->replaceScene(resultSceneWithAnimation);
 }
 
-void EnemyLayer::setBossWarningOn(){
-	Sequence* sequenceFront = Sequence::create(FadeIn::create(0.5f), FadeOut::create(1.5f),FadeIn::create(0.5f), FadeOut::create(2.0f), NULL);
+void EnemyLayer::setBossWarningOn() {
+	Sequence* sequenceFront = Sequence::create(FadeIn::create(0.5f), FadeOut::create(1.5f), FadeIn::create(0.5f), FadeOut::create(2.0f), NULL);
 	this->bossWarning->runAction(sequenceFront);
+}
+
+void EnemyLayer::bossStartMove() {
+	Vector<FiniteTimeAction*> bossMoveBezier;
+	for (int i = 0; i < 10; i++) {
+		ccBezierConfig bezierConfig;
+		bezierConfig.controlPoint_1 = Point(CCRANDOM_0_1()*winSize.width,CCRANDOM_0_1()*winSize.height);
+		bezierConfig.controlPoint_2 = Point(CCRANDOM_0_1()*winSize.width,CCRANDOM_0_1()*winSize.height);
+		bezierConfig.endPosition = Point(CCRANDOM_0_1()*winSize.width,winSize.height/3*2 + (CCRANDOM_0_1()*winSize.height /3 ));
+		FiniteTimeAction* tempBossMoveBezier = BezierTo::create(3.0f, bezierConfig);
+		bossMoveBezier.pushBack(tempBossMoveBezier);
+	}
+	Sequence* bossMoveSequence = Sequence::create(bossMoveBezier.at(0),bossMoveBezier.at(1),bossMoveBezier.at(2),bossMoveBezier.at(3),bossMoveBezier.at(4),bossMoveBezier.at(5),bossMoveBezier.at(6),bossMoveBezier.at(7),bossMoveBezier.at(8),bossMoveBezier.at(9),NULL);
+	RepeatForever* bossMoveSequenceRepeat = RepeatForever::create(bossMoveSequence);
+	bossSprite->runAction(bossMoveSequenceRepeat);
+
+	static_cast<GameScene*>(this->getParent())->getEnemyBulletLayer()->bossStartShooting();
+}
+
+Sprite* EnemyLayer::getBossSprite(){
+	return this->bossSprite;
 }

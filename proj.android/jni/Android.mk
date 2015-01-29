@@ -28,7 +28,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/WelcomeButtonLayer.cpp \
                    ../../Classes/ResultButtonLayer.cpp \
                    ../../Classes/WelcomeBackgroundLayer.cpp \
-                   ../../Classes/ResultBackgroundLayer.cpp
+                   ../../Classes/ResultBackgroundLayer.cpp \
+                   ../../Classes/EnemyBulletLayer.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 

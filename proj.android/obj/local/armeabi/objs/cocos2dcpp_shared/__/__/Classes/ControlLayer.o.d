@@ -320,7 +320,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/ControlLayer.o: \
  jni/../../Classes/GameBackgroundLayer.h jni/../../Classes/PlaneLayer.h \
  jni/../../Classes/PlaneUserData.h jni/../../Classes/UFOLayer.h \
  jni/../../Classes/GameScene.h jni/../../Classes/BulletLayer.h \
- jni/../../Classes/EnemyLayer.h
+ jni/../../Classes/EnemyLayer.h jni/../../Classes/EnemyBulletLayer.h
 
 jni/../../Classes/ControlLayer.h:
 
@@ -971,3 +971,5 @@ jni/../../Classes/GameScene.h:
 jni/../../Classes/BulletLayer.h:
 
 jni/../../Classes/EnemyLayer.h:
+
+jni/../../Classes/EnemyBulletLayer.h:
