@@ -17,7 +17,7 @@ public:
 	CREATE_FUNC(ResultButtonLayer);
 private:
 	void restartGameButtonCallback(Ref* pSender);
-	void startGameButtonCallback(Ref* pSender);
+	void backToMenuButtonCallback(Ref* pSender);
 	virtual bool init() override;
 };
 

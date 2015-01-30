@@ -15,10 +15,10 @@ bool ResultButtonLayer::init() {
 	restartGameButton->setPosition(Director::getInstance()->getWinSize().width/2,400);
 	this->addChild(restartGameButton);
 
-	MenuItemSprite* startGameButtonItemSprite = MenuItemSprite::create(Sprite::createWithSpriteFrameName("startGameButton.png"), Sprite::createWithSpriteFrameName("startGameButton.png"), CC_CALLBACK_1(ResultButtonLayer::startGameButtonCallback, this));
-	Menu* startGameButton = Menu::create(startGameButtonItemSprite, nullptr);
-	startGameButton->setPosition(Director::getInstance()->getWinSize().width/2,330);
-	this->addChild(startGameButton);
+	MenuItemSprite* backToMenuButtonItemSprite = MenuItemSprite::create(Sprite::createWithSpriteFrameName("backToMenuButton.png"), Sprite::createWithSpriteFrameName("backToMenuButton.png"), CC_CALLBACK_1(ResultButtonLayer::backToMenuButtonCallback, this));
+	Menu* backToMenuButton = Menu::create(backToMenuButtonItemSprite, nullptr);
+	backToMenuButton->setPosition(Director::getInstance()->getWinSize().width/2,330);
+	this->addChild(backToMenuButton);
 
 	return true;
 }
@@ -28,7 +28,7 @@ void ResultButtonLayer::restartGameButtonCallback(Ref* pSender){
 	Director::getInstance()->replaceScene(welcomeScene);
 }
 
-void ResultButtonLayer::startGameButtonCallback(Ref* pSender){
+void ResultButtonLayer::backToMenuButtonCallback(Ref* pSender){
 	Scene* welcomeScene = TransitionFade::create(2.0f,WelcomeScene::create());
 	Director::getInstance()->replaceScene(welcomeScene);
 }
