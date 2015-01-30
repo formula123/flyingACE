@@ -25,7 +25,7 @@ bool EnemyBulletLayer::init(){
 	return true;
 }
 
-EnemyBulletLayer::EnemyBulletLayer() {
+EnemyBulletLayer::EnemyBulletLayer() :actionExplosion(nullptr){
 	winSize = Director::getInstance()->getWinSize();
 }
 
@@ -77,6 +77,6 @@ void EnemyBulletLayer::update(float useless) {
 }
 
 void EnemyBulletLayer::changeSceneCallBack(float useless) {
-	Scene* resultSceneWithAnimation = TransitionFade::create(2.0f, ResultScene::create());
+	Scene* resultSceneWithAnimation = TransitionFade::create(2.0f, ResultScene::create(false, static_cast<GameScene*>(this->getParent())->getControlLayer()->getScore()));
 	Director::getInstance()->replaceScene(resultSceneWithAnimation);
 }

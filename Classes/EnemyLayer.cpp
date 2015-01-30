@@ -20,7 +20,7 @@
 USING_NS_CC;
 
 EnemyLayer::EnemyLayer() :
-		winSize(Director::getInstance()->getWinSize()), baseEnemyAppearProbability(UserDefault::getInstance()->getFloatForKey("probabilityOfBaseEnemyAppear")), deltaEnemyAppearProbability(UserDefault::getInstance()->getFloatForKey("probabilityOfDeltaEnemyAppear")), nowEnemyAppearProbability(baseEnemyAppearProbability), bossAppeared(false) {
+		winSize(Director::getInstance()->getWinSize()),bossWarning(nullptr),bossSprite(nullptr), baseEnemyAppearProbability(UserDefault::getInstance()->getFloatForKey("probabilityOfBaseEnemyAppear")), deltaEnemyAppearProbability(UserDefault::getInstance()->getFloatForKey("probabilityOfDeltaEnemyAppear")), nowEnemyAppearProbability(baseEnemyAppearProbability), bossAppeared(false) {
 }
 
 EnemyLayer::~EnemyLayer() {
@@ -91,6 +91,7 @@ void EnemyLayer::stopAddEnemy() {
 	this->unschedule(schedule_selector(EnemyLayer::addEnemySprite));
 }
 
+// 通关检测、碰撞检测
 void EnemyLayer::update(float useless) {
 	Animation* animationExplosion = AnimationCache::getInstance()->getAnimation("explosion");
 	animationExplosion->setRestoreOriginalFrame(false);
@@ -184,8 +185,14 @@ void EnemyLayer::addBossSprite() {
 	this->bossAppeared = true;
 }
 
+// 通关 / 阵亡后，调用该函数进行场景切换
 void EnemyLayer::changeSceneCallBack(float useless) {
-	Scene* resultSceneWithAnimation = TransitionFade::create(2.0f, ResultScene::create());
+	Scene* resultSceneWithAnimation;
+	if((allEnemy.empty() == true) && (this->bossAppeared == true)){
+		resultSceneWithAnimation = TransitionFade::create(2.0f, ResultScene::create(true, static_cast<GameScene*>(this->getParent())->getControlLayer()->getScore()));
+	}else{
+		resultSceneWithAnimation = TransitionFade::create(2.0f, ResultScene::create(false, static_cast<GameScene*>(this->getParent())->getControlLayer()->getScore()));
+	}
 	Director::getInstance()->replaceScene(resultSceneWithAnimation);
 }
 

@@ -22,6 +22,7 @@ public:
 	void addScoreBy(int addScore);
 	void updateHPIndicator();
 	void setLaunchButtonEnable();
+	int getScore();
 private:
 	int score;
 	cocos2d::Label* scoreLabel;

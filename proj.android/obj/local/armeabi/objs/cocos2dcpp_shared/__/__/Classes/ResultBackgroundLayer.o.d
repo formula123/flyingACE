@@ -347,7 +347,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/ResultBackgroundLayer.o: 
  jni/../../cocos2d/cocos/3d/../deprecated/CCBool.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
- jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h
+ jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
+ /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/strstream \
+ /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h
 
 jni/../../Classes/ResultBackgroundLayer.h:
 
@@ -1044,3 +1046,7 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCString.h:
 jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h:
 
 jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
+
+/home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/strstream:
+
+/home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h:

@@ -79,6 +79,7 @@ void AppDelegate::applicationWillEnterForeground() {
 void AppDelegate::initConfigXML(){
 	UserDefault::getInstance()->setStringForKey("textureFileName","texture.plist");
 	UserDefault::getInstance()->setFloatForKey("intervalOfAddBullet",0.2f);
+	//UserDefault::getInstance()->setFloatForKey("intervalOfAddCloud",20.0f);
 	UserDefault::getInstance()->setFloatForKey("intervalOfAddEnemy", 0.5f);
 	UserDefault::getInstance()->setFloatForKey("intervalOfAddEnemyBullet", 0.2f);
 	UserDefault::getInstance()->setIntegerForKey("damageOfInitBullet",100);
@@ -90,6 +91,7 @@ void AppDelegate::initConfigXML(){
 	UserDefault::getInstance()->setIntegerForKey("HPOfEnemy2", 400);
 	UserDefault::getInstance()->setIntegerForKey("HPOfEnemy3", 400);
 	UserDefault::getInstance()->setIntegerForKey("HPOfEnemyBoss",18000);
+	//UserDefault::getInstance()->setIntegerForKey("FlytimeOfCloud",35);
 	UserDefault::getInstance()->setIntegerForKey("FlytimeOfEnemy1",10);
 	UserDefault::getInstance()->setIntegerForKey("FlytimeOfEnemy2",10);
 	UserDefault::getInstance()->setIntegerForKey("FlytimeOfEnemy3",5);

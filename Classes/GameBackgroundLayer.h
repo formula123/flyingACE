@@ -13,12 +13,16 @@
 class GameBackgroundLayer : public cocos2d::Layer{
 public:
 	CREATE_FUNC(GameBackgroundLayer);
+	//void addCloud(float useless);
 
 private:
-	virtual bool init();
 	void update(float useless) override;
 	cocos2d::Sprite* background1;
 	cocos2d::Sprite* background2;
+	cocos2d::Size winSize;
+
+	virtual bool init();
+	//void cloudMoveFinished(Node* pSender);
 };
 
 #endif /* GAMEBACKGROUNDLAYER_H_ */

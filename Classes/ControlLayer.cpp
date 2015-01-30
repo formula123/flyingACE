@@ -112,3 +112,7 @@ void ControlLayer::onKeyReleased(EventKeyboard::KeyCode keycode, Event* event){
 			break;
 	}
 }
+
+int ControlLayer::getScore(){
+	return this->score;
+}

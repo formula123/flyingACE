@@ -14,7 +14,7 @@
 
 class ResultScene :public cocos2d::Scene{
 public:
-	static Scene* create();
+	static Scene* create(bool isWin, int score);
 private:
 	static Scene* resultScene;
 };
