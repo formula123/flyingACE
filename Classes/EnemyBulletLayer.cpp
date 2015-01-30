@@ -37,7 +37,7 @@ void EnemyBulletLayer::addBossBulletSet(float useless) {
 	allEnemyBullet.pushBack(bulletSet);
 	this->addChild(bulletSet);
 
-	FiniteTimeAction* bulletSetMove = MoveTo::create(2, Point(-winSize.width + CCRANDOM_0_1()*winSize.width*3, -bulletSet->getContentSize().height/2));
+	FiniteTimeAction* bulletSetMove = MoveTo::create(2, Point(-winSize.width/2 + CCRANDOM_0_1()*winSize.width*2, -bulletSet->getContentSize().height/2));
 	FiniteTimeAction* bulletSetRemove = CallFuncN::create(CC_CALLBACK_1(EnemyBulletLayer::bossBulletMoveFinished, this));
 	Sequence* bulletSetSequence = Sequence::create(bulletSetMove, bulletSetRemove, NULL);
 	bulletSet->runAction(bulletSetSequence);
