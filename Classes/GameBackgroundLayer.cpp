@@ -14,10 +14,12 @@ const float backgroundMoveSpeed = 1;
 bool GameBackgroundLayer::init(){
 	background1 = Sprite::createWithSpriteFrameName("img_bg_1.jpg");
 	background1->setAnchorPoint(Point(0,0));
+	background1->setScale(2);
 	this->addChild(background1);
 
 	background2 = Sprite::createWithSpriteFrameName("img_bg_1.jpg");
 	background2->setAnchorPoint(Point(0,0));
+	background2->setScale(2);
 	this->addChild(background2);
 
 	winSize = Director::getInstance()->getWinSize();
@@ -30,7 +32,7 @@ bool GameBackgroundLayer::init(){
 
 void GameBackgroundLayer::update(float useless){
 	background1->setPositionY(background1->getPositionY() - backgroundMoveSpeed);
-	background2->setPositionY(background1->getPositionY() + background1->getContentSize().height - 1);
+	background2->setPositionY(background1->getPositionY() + background1->getContentSize().height*2 - 1);
 	if(background2->getPositionY() < 0){
 		background1->setPositionY(0);
 	}

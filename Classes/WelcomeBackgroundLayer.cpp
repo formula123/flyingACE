@@ -12,6 +12,7 @@ USING_NS_CC;
 bool WelcomeBackgroundLayer::init(){
 	Sprite* background = Sprite::createWithSpriteFrameName("img_bg_welcome.jpg");
 	background->setAnchorPoint(Point(0,0));
+	background->setScale(2);
 	this->addChild(background);
 
 	Sprite* logo = Sprite::createWithSpriteFrameName("logo.png");
