@@ -10,6 +10,7 @@
 
 #include "cocos2d.h"
 #include "GameScene.h"
+#include "SelectScene.h"
 
 class WelcomeButtonLayer : public cocos2d::Layer{
 public:

@@ -19,6 +19,6 @@ bool WelcomeButtonLayer::init() {
 }
 
 void WelcomeButtonLayer::startGameButtonCallback(Ref* pSender) {
-	Scene* resultSceneWithAnimation = TransitionFade::create(2.0f, GameScene::create());
+	Scene* resultSceneWithAnimation = TransitionFade::create(2.0f, SelectScene::create());
 	Director::getInstance()->replaceScene(resultSceneWithAnimation);
 }

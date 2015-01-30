@@ -322,6 +322,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/EnemyLayer.o: \
  jni/../../Classes/ResultScene.h jni/../../Classes/ResultButtonLayer.h \
  jni/../../Classes/GameScene.h jni/../../Classes/EnemyBulletLayer.h \
  jni/../../Classes/WelcomeScene.h jni/../../Classes/WelcomeButtonLayer.h \
+ jni/../../Classes/SelectScene.h \
+ jni/../../Classes/SelectBackgroundLayer.h \
+ jni/../../Classes/SelectButtonLayer.h \
  jni/../../Classes/WelcomeBackgroundLayer.h \
  jni/../../Classes/ResultBackgroundLayer.h
 
@@ -984,6 +987,12 @@ jni/../../Classes/EnemyBulletLayer.h:
 jni/../../Classes/WelcomeScene.h:
 
 jni/../../Classes/WelcomeButtonLayer.h:
+
+jni/../../Classes/SelectScene.h:
+
+jni/../../Classes/SelectBackgroundLayer.h:
+
+jni/../../Classes/SelectButtonLayer.h:
 
 jni/../../Classes/WelcomeBackgroundLayer.h:
 

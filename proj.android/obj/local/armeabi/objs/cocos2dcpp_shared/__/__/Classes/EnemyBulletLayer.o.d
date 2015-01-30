@@ -356,7 +356,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/EnemyBulletLayer.o: \
  /home/netbeen/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include/backward/backward_warning.h \
  jni/../../Classes/UFOLayer.h jni/../../Classes/ResultScene.h \
  jni/../../Classes/ResultButtonLayer.h jni/../../Classes/WelcomeScene.h \
- jni/../../Classes/WelcomeButtonLayer.h \
+ jni/../../Classes/WelcomeButtonLayer.h jni/../../Classes/SelectScene.h \
+ jni/../../Classes/SelectBackgroundLayer.h \
+ jni/../../Classes/SelectButtonLayer.h \
  jni/../../Classes/WelcomeBackgroundLayer.h \
  jni/../../Classes/ResultBackgroundLayer.h
 
@@ -1083,6 +1085,12 @@ jni/../../Classes/ResultButtonLayer.h:
 jni/../../Classes/WelcomeScene.h:
 
 jni/../../Classes/WelcomeButtonLayer.h:
+
+jni/../../Classes/SelectScene.h:
+
+jni/../../Classes/SelectBackgroundLayer.h:
+
+jni/../../Classes/SelectButtonLayer.h:
 
 jni/../../Classes/WelcomeBackgroundLayer.h:
 
